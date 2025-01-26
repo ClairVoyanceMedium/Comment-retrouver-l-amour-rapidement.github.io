@@ -28,10 +28,27 @@
 
     <!-- Styles CSS optimisés -->
     <style>
+        @font-face {
+            font-family: 'Cinzel';
+            src: url('https://clairvoyancemedium.github.io/Consultation_de_voyance_par_email_pas_chere.github.io/Cinzel-Regular.woff2') format('woff2'),
+                 url('https://clairvoyancemedium.github.io/Consultation_de_voyance_par_email_pas_chere.github.io/Cinzel-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Playfair Display';
+            src: url('https://clairvoyancemedium.github.io/Consultation_de_voyance_par_email_pas_chere.github.io/PlayfairDisplay-Regular.woff2') format('woff2'),
+                 url('https://clairvoyancemedium.github.io/Consultation_de_voyance_par_email_pas_chere.github.io/PlayfairDisplay-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
         :root { --bg: #000; --text: #fff; --accent: #87CEEB; --button-bg: linear-gradient(145deg, #FFB6C1, #FF69B4); --button-txt: #fff; }
-        body { font-family: 'Playfair Display', serif, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); text-align: center; position: relative; overflow: auto; }
+        body { font-family: 'Cinzel', serif, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); text-align: center; position: relative; overflow: auto; }
         header { padding: 2rem 0; background: #111; position: relative; }
-        h1 { font-family: 'Cinzel', serif; font-size: 2.2em; font-weight: 400; color: #fff; }
+        h1, h2 { font-family: 'Playfair Display', serif; }
+        h1 { font-size: 2.2em; font-weight: 400; color: #fff; }
         .cta-button { display: inline-block; padding: 0.8rem 1.2rem; font-size: 1.2em; color: var(--button-txt); background: var(--button-bg); text-decoration: none; border-radius: 5px; transition: all .3s ease; }
         .cta-button:hover { transform: scale(1.05); opacity: .95; }
         footer { margin-top: 2rem; font-size: .9em; color: #aaa; }
@@ -58,7 +75,7 @@
         .carousel-control { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: #fff; border: none; padding: 10px; cursor: pointer; }
         .carousel-control.prev { left: 0; }
         .carousel-control.next { right: 0; }
-        .shooting-star { position: absolute; width: 2px; height: 2px; background: #fff; border-radius: 50%; animation: shooting-star 10s linear infinite; }
+        .shooting-star { position: absolute; width: 2px; height: 2px; background: #fff; border-radius: 50%; animation: shooting-star linear infinite; }
         @keyframes shooting-star {
             0% { transform: translateX(-100%) translateY(-100%); opacity: 0; }
             10% { opacity: 1; }
@@ -112,22 +129,6 @@
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Frederick propose une analyse approfondie de votre compatibilité amoureuse basée sur vos énergies et vos signes astrologiques. Les résultats sont précis et accompagnés de conseils personnalisés."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Combien de temps faut-il pour voir les résultats des rituels ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Les résultats varient en fonction des individus et des situations. Certains clients voient des changements en quelques jours, tandis que d'autres peuvent prendre quelques semaines."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Les rituels sont-ils garantis ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Frederick travaille avec dévouement pour maximiser les chances de succès, mais chaque situation est unique. Il n'y a pas de garantie absolue, mais la satisfaction client est une priorité."
                 }
             }
         ]
@@ -195,8 +196,8 @@
         <!-- Génération dynamique des étoiles via JavaScript -->
     </div>
 
-    <!-- Étoile filante -->
-    <div class="shooting-star"></div>
+    <!-- Étoiles filantes -->
+    <div id="shooting-stars-container"></div>
 
     <header>
         <!-- Étoiles autour du logo -->
@@ -232,27 +233,27 @@
     <main>
         <!-- Section Magie Blanche -->
         <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA;">Magie Blanche</h2>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8em; color: #87CEFA;">Magie Blanche</h2>
             <p style="font-size: 1.1em; margin-bottom: 1rem;">La magie blanche est une pratique douce et harmonieuse, idéale pour attirer l'amour ou renouer des liens sans effets négatifs. Elle est parfaite pour ceux qui cherchent une solution éthique et sécurisée pour retrouver l'amour.</p>
             <a href="https://lien-magie-blanche.com" class="cta-button" role="button" tabindex="0" aria-label="Magie blanche pour un retour sentimental">Cliquez ici</a>
         </div>
 
         <!-- Section Magie Rouge -->
         <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA;">Magie Rouge</h2>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8em; color: #87CEFA;">Magie Rouge</h2>
             <p style="font-size: 1.1em; margin-bottom: 1rem;">La magie rouge est un rituel puissant qui utilise des énergies intenses pour récupérer un ex ou attirer une passion ardente. Elle est idéale pour ceux qui cherchent une solution rapide et efficace pour retrouver l'amour.</p>
             <a href="https://lien-magie-rouge.com" class="cta-button" role="button" tabindex="0" aria-label="Magie rouge pour un retour sentimental intense">Cliquez ici</a>
         </div>
 
         <!-- Section Compatibilité Amoureuse -->
         <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA;">Compatibilité Amoureuse</h2>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8em; color: #87CEFA;">Compatibilité Amoureuse</h2>
             <p style="font-size: 1.1em; margin-bottom: 1rem;">Découvrez votre compatibilité amoureuse avec votre partenaire ou votre âme sœur. Frederick propose une analyse approfondie basée sur vos énergies et vos signes astrologiques, accompagnée de conseils personnalisés pour renforcer votre relation.</p>
             <a href="https://lien-compatibilite-amoureuse.com" class="cta-button compatibility-button" role="button" tabindex="0" aria-label="Compatibilité amoureuse">Cliquez ici</a>
         </div>
 
         <!-- Titre pour les boutons du bas -->
-        <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA; margin-bottom: 1rem;">Voyance par Email Amour</h2>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 1.8em; color: #87CEFA; margin-bottom: 1rem;">Voyance par Email Amour</h2>
 
         <!-- Boutons de voyance par email alignés -->
         <div class="cta-buttons-container">
@@ -333,7 +334,7 @@
         </section>
 
         <!-- Section scintillante -->
-        <p class="scintillant">"L'amour vous attend !"</p>
+        <p class="scintillant">"Votre avenir s'éclaircit enfin !"</p>
     </main>
 
     <footer>
@@ -363,6 +364,19 @@
             star.style.left = `${Math.random() * 100}%`;
             star.style.animationDelay = `${Math.random() * 2}s`;
             starsContainer.appendChild(star);
+        }
+
+        // Génération dynamique des étoiles filantes
+        const shootingStarsContainer = document.getElementById('shooting-stars-container');
+        const shootingStarCount = 10; // Nombre d'étoiles filantes
+
+        for (let i = 0; i < shootingStarCount; i++) {
+            const shootingStar = document.createElement('div');
+            shootingStar.classList.add('shooting-star');
+            shootingStar.style.top = `${Math.random() * 100}%`;
+            shootingStar.style.left = `${Math.random() * 100}%`;
+            shootingStar.style.animationDuration = `${Math.random() * 5 + 5}s`; // Durée aléatoire entre 5 et 10 secondes
+            shootingStarsContainer.appendChild(shootingStar);
         }
 
         // Carrousel de témoignages
