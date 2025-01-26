@@ -16,7 +16,7 @@
     <meta name="description" content="✨ Retrouvez l'amour avec Frederick, médium expert en magie rouge, magie blanche et compatibilité amoureuse. Rituels puissants, voyance fiable et conseils personnalisés pour récupérer votre ex ou attirer l'amour. Disponible 24h/7j. ✨">
     <meta name="keywords" content="magie rouge, magie blanche, compatibilité amoureuse, retrouver son ex, attirer l'amour, voyance par email, rituel d'amour, retour affectif, médium sérieux, voyance sentimentale, rituel de magie rouge, rituel de magie blanche, consultation voyance, voyance rapide, voyance fiable, voyance en ligne, voyance amour, voyance couple, voyance sérieuse, voyance pas chère">
     <meta name="author" content="Frederick - ClairvoyanceMedium.com">
-    <link rel="canonical" href="https://clairvoyancemedium.github.io/Retrouver_son_Amour_Magie_Rouge_Blanche.github.io">
+    <link rel="canonical" href="https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="favicon_optimized.png" type="image/png" sizes="16x16 32x32 48x48 64x64 128x128" crossorigin="anonymous" loading="lazy">
@@ -28,7 +28,7 @@
 
     <style>
         :root { --bg: #000; --text: #fff; --accent: #87CEEB; --button-bg: linear-gradient(145deg, #FFB6C1, #FF69B4); --button-txt: #fff; }
-        body { font-family: 'Playfair Display', serif, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); text-align: center; }
+        body { font-family: 'Playfair Display', serif, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); text-align: center; position: relative; overflow: hidden; }
         header { padding: 2rem 0; background: #111; position: relative; }
         h1 { font-family: 'Cinzel', serif; font-size: 2.2em; font-weight: 400; color: #fff; }
         .cta-button { display: inline-block; padding: 0.8rem 1.2rem; font-size: 1.2em; color: var(--button-txt); background: var(--button-bg); text-decoration: none; border-radius: 5px; transition: all .3s ease; }
@@ -58,12 +58,12 @@
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "url": "https://clairvoyancemedium.github.io/Retrouver_son_Amour_Magie_Rouge_Blanche.github.io",
+        "url": "https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/",
         "name": "Retrouvez l'Amour - Magie Rouge & Blanche",
         "description": "Retrouvez l'amour avec Frederick, médium expert en magie rouge, magie blanche et compatibilité amoureuse.",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://clairvoyancemedium.github.io/Retrouver_son_Amour_Magie_Rouge_Blanche.github.io/?q={search_term_string}",
+            "target": "https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/?q={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     }
@@ -110,7 +110,7 @@
         "@type": "Person",
         "name": "Frederick",
         "description": "Médium expert en magie rouge, magie blanche et compatibilité amoureuse.",
-        "url": "https://clairvoyancemedium.github.io/Retrouver_son_Amour_Magie_Rouge_Blanche.github.io",
+        "url": "https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/",
         "sameAs": [
             "https://facebook.com/clairvoyancemedium",
             "https://twitter.com/clairvoyancemedium",
@@ -119,7 +119,7 @@
         "worksFor": {
             "@type": "Organization",
             "name": "ClairvoyanceMedium.com",
-            "url": "https://clairvoyancemedium.github.io/Retrouver_son_Amour_Magie_Rouge_Blanche.github.io"
+            "url": "https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/"
         }
     }
     </script>
@@ -130,17 +130,12 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P3J6SXCH" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <header>
-        <!-- Étoiles dorées autour du logo -->
-        <div class="stars">
-            <div class="star" style="top: 10%; left: 20%;"></div>
-            <div class="star" style="top: 15%; left: 80%;"></div>
-            <div class="star" style="top: 30%; left: 50%;"></div>
-            <div class="star" style="top: 40%; left: 10%;"></div>
-            <div class="star" style="top: 60%; left: 70%;"></div>
-            <div class="star" style="top: 80%; left: 30%;"></div>
-        </div>
+    <!-- Étoiles dynamiques sur tout le site -->
+    <div class="stars">
+        <!-- Génération dynamique des étoiles via JavaScript -->
+    </div>
 
+    <header>
         <picture>
             <!-- Format WebP pour les navigateurs modernes -->
             <source srcset="https://i.imgur.com/GmyGlKk.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 450px">
@@ -232,6 +227,19 @@
         const currentYear = new Date().getFullYear();
         // Insérer l'année dans l'élément avec l'ID "current-year"
         document.getElementById("current-year").textContent = currentYear;
+
+        // Génération dynamique des étoiles
+        const starsContainer = document.querySelector('.stars');
+        const starCount = 100; // Nombre d'étoiles
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 2}s`;
+            starsContainer.appendChild(star);
+        }
 
         function addToFavorites() {
             const text = document.getElementById("favorite-text");
