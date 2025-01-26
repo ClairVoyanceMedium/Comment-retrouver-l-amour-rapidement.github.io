@@ -29,7 +29,7 @@
     <!-- Styles CSS optimisés -->
     <style>
         :root { --bg: #000; --text: #fff; --accent: #87CEEB; --button-bg: linear-gradient(145deg, #FFB6C1, #FF69B4); --button-txt: #fff; }
-        body { font-family: 'Playfair Display', serif, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); text-align: center; position: relative; overflow: auto; } /* Changé overflow: hidden en overflow: auto */
+        body { font-family: 'Playfair Display', serif, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); text-align: center; position: relative; overflow: auto; }
         header { padding: 2rem 0; background: #111; position: relative; }
         h1 { font-family: 'Cinzel', serif; font-size: 2.2em; font-weight: 400; color: #fff; }
         .cta-button { display: inline-block; padding: 0.8rem 1.2rem; font-size: 1.2em; color: var(--button-txt); background: var(--button-bg); text-decoration: none; border-radius: 5px; transition: all .3s ease; }
@@ -58,6 +58,13 @@
         .carousel-control { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: #fff; border: none; padding: 10px; cursor: pointer; }
         .carousel-control.prev { left: 0; }
         .carousel-control.next { right: 0; }
+        .shooting-star { position: absolute; width: 2px; height: 2px; background: #fff; border-radius: 50%; animation: shooting-star 10s linear infinite; }
+        @keyframes shooting-star {
+            0% { transform: translateX(-100%) translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(100vw) translateY(100vh); opacity: 0; }
+        }
     </style>
 
     <!-- Balises JSON-LD pour SEO -->
@@ -142,7 +149,20 @@
         <!-- Génération dynamique des étoiles via JavaScript -->
     </div>
 
+    <!-- Étoile filante -->
+    <div class="shooting-star"></div>
+
     <header>
+        <!-- Étoiles autour du logo -->
+        <div class="stars">
+            <div class="star" style="top: 10%; left: 20%;"></div>
+            <div class="star" style="top: 15%; left: 80%;"></div>
+            <div class="star" style="top: 30%; left: 50%;"></div>
+            <div class="star" style="top: 40%; left: 10%;"></div>
+            <div class="star" style="top: 60%; left: 70%;"></div>
+            <div class="star" style="top: 80%; left: 30%;"></div>
+        </div>
+
         <picture>
             <!-- Format WebP pour les navigateurs modernes -->
             <source srcset="https://i.imgur.com/GmyGlKk.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 450px">
@@ -223,7 +243,41 @@
                             <p><em>"L'analyse de compatibilité amoureuse de Frederick a changé ma vie. J'ai enfin compris les blocages dans ma relation et j'ai pu les surmonter grâce à ses conseils. Un grand merci !" — Thomas, 42 ans</em></p>
                         </blockquote>
                     </div>
-                    <!-- Ajoutez 7 autres témoignages ici -->
+                    <div class="carousel-item">
+                        <blockquote class="playfair-display">
+                            <p><em>"Frederick m'a aidé à retrouver la paix dans ma relation. Ses rituels de magie blanche sont incroyablement efficaces. Je suis très reconnaissante !" — Marie, 31 ans</em></p>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="playfair-display">
+                            <p><em>"La magie rouge a fonctionné pour moi ! Mon ex est revenu après seulement deux semaines. Frederick est un vrai professionnel." — Julie, 27 ans</em></p>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="playfair-display">
+                            <p><em>"Je recommande Frederick à tous ceux qui cherchent des réponses claires et des solutions efficaces. Son analyse de compatibilité était très précise." — Marc, 45 ans</em></p>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="playfair-display">
+                            <p><em>"La magie blanche m'a aidée à attirer l'amour dans ma vie. Frederick est un médium exceptionnel, ses rituels sont puissants et éthiques. Merci pour tout !" — Laura, 29 ans</em></p>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="playfair-display">
+                            <p><em>"Frederick m'a aidé à retrouver la paix dans ma relation. Ses rituels de magie blanche sont incroyablement efficaces. Je suis très reconnaissante !" — Marie, 31 ans</em></p>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="playfair-display">
+                            <p><em>"La magie rouge a fonctionné pour moi ! Mon ex est revenu après seulement deux semaines. Frederick est un vrai professionnel." — Julie, 27 ans</em></p>
+                        </blockquote>
+                    </div>
+                    <div class="carousel-item">
+                        <blockquote class="playfair-display">
+                            <p><em>"Je recommande Frederick à tous ceux qui cherchent des réponses claires et des solutions efficaces. Son analyse de compatibilité était très précise." — Marc, 45 ans</em></p>
+                        </blockquote>
+                    </div>
                 </div>
                 <button class="carousel-control prev" onclick="prevSlide()">&#10094;</button>
                 <button class="carousel-control next" onclick="nextSlide()">&#10095;</button>
