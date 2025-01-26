@@ -8,7 +8,7 @@
         }
     </script>
 
-    <meta name="google-adsense-account" content="ca-pub-1318316674011684">
+    <!-- Balises meta essentielles -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -21,21 +21,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" href="favicon_optimized.png" type="image/png" sizes="16x16 32x32 48x48 64x64 128x128" crossorigin="anonymous" loading="lazy">
 
-    <!-- Préchargement des liens Stripe pour les boutons CTA -->
-    <link rel="prefetch" href="https://buy.stripe.com/14kdRe0EQ4iH1uoaFa">
-    <link rel="prefetch" href="https://buy.stripe.com/dR614scnycPddd66oV">
-    <link rel="prefetch" href="https://buy.stripe.com/28o3cA0EQ5mL0qk14C">
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display&display=swap">
+    <link rel="preload" as="image" href="https://i.imgur.com/GmyGlKk.webp" type="image/webp" imagesizes="450px">
 
     <!-- Styles CSS optimisés -->
     <style>
-        @font-face {
-            font-family: 'Senzel';
-            src: url('https://clairvoyancemedium.github.io/Consultation_de_voyance_par_email_pas_chere.github.io/Senzel-Regular.woff2') format('woff2'),
-                 url('https://clairvoyancemedium.github.io/Consultation_de_voyance_par_email_pas_chere.github.io/Senzel-Regular.woff') format('woff');
-            font-weight: 400;
-            font-style: normal;
-        }
-
         @font-face {
             font-family: 'Cinzel';
             src: url('https://clairvoyancemedium.github.io/Consultation_de_voyance_par_email_pas_chere.github.io/Cinzel-Regular.woff2') format('woff2'),
@@ -55,8 +46,8 @@
         :root { --bg: #000; --text: #fff; --accent: #87CEEB; --button-bg: linear-gradient(145deg, #FFB6C1, #FF69B4); --button-txt: #fff; }
         body { font-family: 'Cinzel', serif, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); text-align: center; position: relative; overflow: auto; }
         header { padding: 2rem 0; background: #111; position: relative; }
-        h1, h2 { font-family: 'Senzel', serif; color: #87CEEB; } /* Titres en bleu ciel avec police Senzel */
-        h1 { font-size: 2.2em; font-weight: 400; }
+        h1 { font-family: 'Cinzel', serif; font-size: 2.2em; font-weight: 400; color: #fff; } /* Titre principal en blanc et Cinzel */
+        h2 { font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEEB; } /* Titres secondaires en bleu ciel et Cinzel */
         .cta-button { display: inline-block; padding: 0.8rem 1.2rem; font-size: 1.2em; color: var(--button-txt); background: var(--button-bg); text-decoration: none; border-radius: 5px; transition: all .3s ease; }
         .cta-button:hover { transform: scale(1.05); opacity: .95; }
         footer { margin-top: 2rem; font-size: .9em; color: #aaa; }
@@ -192,6 +183,43 @@
         ]
     }
     </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P3J6SXCH');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6FVTD4ET68"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6FVTD4ET68', {
+            'send_page_view': true,
+            'linker': {
+                'domains': ['clairvoyancemedium.com', 'clairvoyancemedium.github.io']
+            }
+        });
+    </script>
+
+    <!-- Google Ads Remarketing -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-CONVERSION_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-CONVERSION_ID', {
+            'send_page_view': true,
+            'remarketing': true
+        });
+    </script>
+
+    <!-- Politique de sécurité de contenu (CSP) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com 'nonce-RANDOM_NONCE' 'strict-dynamic'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https://i.imgur.com data:; frame-src https://js.stripe.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com https://api.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-uri https://clairvoyancemedium.github.io/csp-report-endpoint;">
 </head>
 
 <body>
@@ -241,27 +269,27 @@
     <main>
         <!-- Section Magie Blanche -->
         <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: 'Senzel', serif; font-size: 1.8em; color: #87CEEB;">Magie Blanche</h2>
+            <h2>Magie Blanche</h2>
             <p style="font-size: 1.1em; margin-bottom: 1rem;">La magie blanche est une pratique douce et harmonieuse, idéale pour attirer l'amour ou renouer des liens sans effets négatifs. Elle est parfaite pour ceux qui cherchent une solution éthique et sécurisée pour retrouver l'amour.</p>
             <a href="https://lien-magie-blanche.com" class="cta-button" role="button" tabindex="0" aria-label="Magie blanche pour un retour sentimental">Cliquez ici</a>
         </div>
 
         <!-- Section Magie Rouge -->
         <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: 'Senzel', serif; font-size: 1.8em; color: #87CEEB;">Magie Rouge</h2>
+            <h2>Magie Rouge</h2>
             <p style="font-size: 1.1em; margin-bottom: 1rem;">La magie rouge est un rituel puissant qui utilise des énergies intenses pour récupérer un ex ou attirer une passion ardente. Elle est idéale pour ceux qui cherchent une solution rapide et efficace pour retrouver l'amour.</p>
             <a href="https://lien-magie-rouge.com" class="cta-button" role="button" tabindex="0" aria-label="Magie rouge pour un retour sentimental intense">Cliquez ici</a>
         </div>
 
         <!-- Section Compatibilité Amoureuse -->
         <div style="margin-bottom: 2rem;">
-            <h2 style="font-family: 'Senzel', serif; font-size: 1.8em; color: #87CEEB;">Compatibilité Amoureuse</h2>
+            <h2>Compatibilité Amoureuse</h2>
             <p style="font-size: 1.1em; margin-bottom: 1rem;">Découvrez votre compatibilité amoureuse avec votre partenaire ou votre âme sœur. Frederick propose une analyse approfondie basée sur vos énergies et vos signes astrologiques, accompagnée de conseils personnalisés pour renforcer votre relation.</p>
             <a href="https://lien-compatibilite-amoureuse.com" class="cta-button compatibility-button" role="button" tabindex="0" aria-label="Compatibilité amoureuse">Cliquez ici</a>
         </div>
 
         <!-- Titre pour les boutons du bas -->
-        <h2 style="font-family: 'Senzel', serif; font-size: 1.8em; color: #87CEEB; margin-bottom: 1rem;">Voyance par Email Amour</h2>
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEEB; margin-bottom: 1rem;">Voyance par Email Amour</h2>
 
         <!-- Boutons de voyance par email alignés -->
         <div class="cta-buttons-container">
@@ -412,7 +440,7 @@
         function startAutoSlide() {
             autoSlideInterval = setInterval(() => {
                 nextSlide();
-            }, 5000); // Défilement toutes les 5 secondes
+            }, 3000); // Défilement toutes les 3 secondes
         }
 
         // Initialisation du carrousel
