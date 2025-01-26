@@ -65,6 +65,7 @@
             90% { opacity: 1; }
             100% { transform: translateX(100vw) translateY(100vh); opacity: 0; }
         }
+        .cta-buttons-container { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
     </style>
 
     <!-- Balises JSON-LD pour SEO -->
@@ -112,29 +113,74 @@
                     "@type": "Answer",
                     "text": "Frederick propose une analyse approfondie de votre compatibilité amoureuse basée sur vos énergies et vos signes astrologiques. Les résultats sont précis et accompagnés de conseils personnalisés."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "Combien de temps faut-il pour voir les résultats des rituels ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Les résultats varient en fonction des individus et des situations. Certains clients voient des changements en quelques jours, tandis que d'autres peuvent prendre quelques semaines."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Les rituels sont-ils garantis ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Frederick travaille avec dévouement pour maximiser les chances de succès, mais chaque situation est unique. Il n'y a pas de garantie absolue, mais la satisfaction client est une priorité."
+                }
             }
         ]
     }
     </script>
 
-    <!-- JSON-LD pour Person -->
+    <!-- JSON-LD pour Product -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Frederick",
-        "description": "Médium expert en magie rouge, magie blanche et compatibilité amoureuse.",
-        "url": "https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/",
-        "sameAs": [
-            "https://facebook.com/clairvoyancemedium",
-            "https://twitter.com/clairvoyancemedium",
-            "https://linkedin.com/in/clairvoyancemedium"
-        ],
-        "worksFor": {
-            "@type": "Organization",
-            "name": "ClairvoyanceMedium.com",
+        "@type": "Product",
+        "name": "Rituel de Magie Rouge pour Retrouver l'Amour",
+        "description": "Un rituel personnalisé de magie rouge pour récupérer votre ex ou attirer une passion ardente. Conçu et exécuté par Frederick, médium expert.",
+        "brand": {
+            "@type": "Brand",
+            "name": "ClairvoyanceMedium.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "50.00",
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock",
             "url": "https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/"
-        }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "300"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": "Sarah",
+                "datePublished": "2023-10-01",
+                "reviewBody": "J'ai utilisé la magie rouge pour récupérer mon ex, et les résultats ont été incroyables ! Frederick m'a guidée avec précision et bienveillance.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                }
+            },
+            {
+                "@type": "Review",
+                "author": "Laura",
+                "datePublished": "2023-09-25",
+                "reviewBody": "La magie blanche m'a aidée à attirer l'amour dans ma vie. Frederick est un médium exceptionnel, ses rituels sont puissants et éthiques.",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                }
+            }
+        ]
     }
     </script>
 </head>
@@ -208,10 +254,12 @@
         <!-- Titre pour les boutons du bas -->
         <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA; margin-bottom: 1rem;">Voyance par Email Amour</h2>
 
-        <!-- Boutons de voyance par email existants -->
-        <a id="cta-1-question" href="https://buy.stripe.com/14kdRe0EQ4iH1uoaFa" class="cta-button prix" role="button" tabindex="0" aria-label="Achetez une consultation par e-mail pour 1 question au prix de 6 euros" data-category="CTA" data-action="click" data-label="1-question">1 Question - <span class="price">6,00€</span></a>
-        <a id="cta-3-questions" href="https://buy.stripe.com/dR614scnycPddd66oV" class="cta-button prix" role="button" tabindex="0" aria-label="Achetez une consultation par e-mail pour 3 questions au prix de 15 euros" data-category="CTA" data-action="click" data-label="3-questions">3 Questions - <span class="price">15,00€</span></a>
-        <a id="cta-5-questions" href="https://buy.stripe.com/28o3cA0EQ5mL0qk14C" class="cta-button prix" role="button" tabindex="0" aria-label="Achetez une consultation par e-mail pour 5 questions au prix de 28 euros" data-category="CTA" data-action="click" data-label="5-questions">5 Questions - <span class="price">28,00€</span></a>
+        <!-- Boutons de voyance par email alignés -->
+        <div class="cta-buttons-container">
+            <a id="cta-1-question" href="https://buy.stripe.com/14kdRe0EQ4iH1uoaFa" class="cta-button prix" role="button" tabindex="0" aria-label="Achetez une consultation par e-mail pour 1 question au prix de 6 euros" data-category="CTA" data-action="click" data-label="1-question">1 Question - <span class="price">6,00€</span></a>
+            <a id="cta-3-questions" href="https://buy.stripe.com/dR614scnycPddd66oV" class="cta-button prix" role="button" tabindex="0" aria-label="Achetez une consultation par e-mail pour 3 questions au prix de 15 euros" data-category="CTA" data-action="click" data-label="3-questions">3 Questions - <span class="price">15,00€</span></a>
+            <a id="cta-5-questions" href="https://buy.stripe.com/28o3cA0EQ5mL0qk14C" class="cta-button prix" role="button" tabindex="0" aria-label="Achetez une consultation par e-mail pour 5 questions au prix de 28 euros" data-category="CTA" data-action="click" data-label="5-questions">5 Questions - <span class="price">28,00€</span></a>
+        </div>
 
         <!-- Section des avis et témoignages -->
         <section class="avis">
@@ -285,7 +333,7 @@
         </section>
 
         <!-- Section scintillante -->
-        <p class="scintillant">"Votre avenir s'éclaircit enfin !"</p>
+        <p class="scintillant">"L'amour vous attend !"</p>
     </main>
 
     <footer>
@@ -332,24 +380,17 @@
         function nextSlide() {
             currentSlide = (currentSlide + 1) % totalSlides;
             showSlide(currentSlide);
-            resetAutoSlide();
         }
 
         function prevSlide() {
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
             showSlide(currentSlide);
-            resetAutoSlide();
         }
 
         function startAutoSlide() {
             autoSlideInterval = setInterval(() => {
                 nextSlide();
             }, 10000); // Défilement toutes les 10 secondes
-        }
-
-        function resetAutoSlide() {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
         }
 
         // Initialisation du carrousel
