@@ -29,7 +29,7 @@
     <style>
         :root { --bg: #000; --text: #fff; --accent: #87CEEB; --button-bg: linear-gradient(145deg, #FFB6C1, #FF69B4); --button-txt: #fff; }
         body { font-family: 'Playfair Display', serif, Arial, sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); text-align: center; }
-        header { padding: 2rem 0; background: #111; }
+        header { padding: 2rem 0; background: #111; position: relative; }
         h1 { font-family: 'Cinzel', serif; font-size: 2.2em; font-weight: 400; color: #fff; }
         .cta-button { display: inline-block; padding: 0.8rem 1.2rem; font-size: 1.2em; color: var(--button-txt); background: var(--button-bg); text-decoration: none; border-radius: 5px; transition: all .3s ease; }
         .cta-button:hover { transform: scale(1.05); opacity: .95; }
@@ -40,7 +40,7 @@
         p, blockquote { max-width: 60ch; margin: 0 auto; }
         blockquote { font-style: italic; }
         .avis { margin: 1rem 0; }
-        .logo { max-width: 100%; height: auto; width: 450px; margin: 0 auto; display: block; }
+        .logo { max-width: 100%; height: auto; width: 450px; margin: 0 auto; display: block; position: relative; z-index: 1; }
         .cta-button:focus { outline: none; box-shadow: 0 0 0 3px rgba(255,255,255,0.5); }
         .playfair-display { font-family: 'Playfair Display', serif; font-style: italic; line-height: 1.8; font-size: 1.2em; color: #fff; text-align: justify; margin: 1.5rem 0; }
         .magic-buttons { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
@@ -48,6 +48,9 @@
         .compatibility-button { width: 100%; margin-bottom: 2rem; }
         .scintillant { color: #fff; font-weight: bold; font-size: 1.5em; text-align: center; position: relative; display: inline-block; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: etoiles 5s ease-in-out infinite; }
         @keyframes etoiles { 0% { background-position: 200%; } 80% { background-position: -200%; } 100% { background-position: -200%; } }
+        .stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+        .star { position: absolute; width: 2px; height: 2px; background: #FFD700; border-radius: 50%; animation: twinkle 2s infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
     </style>
 
     <!-- Balises JSON-LD pour SEO -->
@@ -128,6 +131,16 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <header>
+        <!-- Étoiles dorées autour du logo -->
+        <div class="stars">
+            <div class="star" style="top: 10%; left: 20%;"></div>
+            <div class="star" style="top: 15%; left: 80%;"></div>
+            <div class="star" style="top: 30%; left: 50%;"></div>
+            <div class="star" style="top: 40%; left: 10%;"></div>
+            <div class="star" style="top: 60%; left: 70%;"></div>
+            <div class="star" style="top: 80%; left: 30%;"></div>
+        </div>
+
         <picture>
             <!-- Format WebP pour les navigateurs modernes -->
             <source srcset="https://i.imgur.com/GmyGlKk.webp" type="image/webp" sizes="(max-width: 768px) 100vw, 450px">
@@ -149,23 +162,29 @@
     </header>
 
     <main>
-        <!-- Nouvelle section pour la magie blanche et rouge -->
-        <div class="magic-buttons">
-            <a href="https://lien-magie-blanche.com" class="cta-button" role="button" tabindex="0" aria-label="Magie blanche pour un retour sentimental">
-                Cliquez ici - Magie Blanche
-                <p style="font-size: 0.9em; margin-top: 0.5em;">Utilisez la magie blanche pour un retour sentimental doux et harmonieux. Idéal pour renouer des liens ou attirer l'amour.</p>
-            </a>
-            <a href="https://lien-magie-rouge.com" class="cta-button" role="button" tabindex="0" aria-label="Magie rouge pour un retour sentimental intense">
-                Cliquez ici - Magie Rouge
-                <p style="font-size: 0.9em; margin-top: 0.5em;">La magie rouge est puissante pour un retour sentimental intense, idéale pour récupérer un ex ou attirer une passion ardente.</p>
-            </a>
+        <!-- Section Magie Blanche -->
+        <div style="margin-bottom: 2rem;">
+            <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA;">Magie Blanche</h2>
+            <p style="font-size: 1.1em; margin-bottom: 1rem;">La magie blanche est une pratique douce et harmonieuse, idéale pour attirer l'amour ou renouer des liens sans effets négatifs. Elle est parfaite pour ceux qui cherchent une solution éthique et sécurisée pour retrouver l'amour.</p>
+            <a href="https://lien-magie-blanche.com" class="cta-button" role="button" tabindex="0" aria-label="Magie blanche pour un retour sentimental">Cliquez ici</a>
         </div>
 
-        <!-- Bouton Compatibilité Amoureuse -->
-        <a href="https://lien-compatibilite-amoureuse.com" class="cta-button compatibility-button" role="button" tabindex="0" aria-label="Compatibilité amoureuse">
-            Cliquez ici - Compatibilité Amoureuse
-            <p style="font-size: 0.9em; margin-top: 0.5em;">Découvrez votre compatibilité amoureuse avec votre partenaire ou votre âme sœur. Analyse approfondie et conseils personnalisés.</p>
-        </a>
+        <!-- Section Magie Rouge -->
+        <div style="margin-bottom: 2rem;">
+            <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA;">Magie Rouge</h2>
+            <p style="font-size: 1.1em; margin-bottom: 1rem;">La magie rouge est un rituel puissant qui utilise des énergies intenses pour récupérer un ex ou attirer une passion ardente. Elle est idéale pour ceux qui cherchent une solution rapide et efficace pour retrouver l'amour.</p>
+            <a href="https://lien-magie-rouge.com" class="cta-button" role="button" tabindex="0" aria-label="Magie rouge pour un retour sentimental intense">Cliquez ici</a>
+        </div>
+
+        <!-- Section Compatibilité Amoureuse -->
+        <div style="margin-bottom: 2rem;">
+            <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA;">Compatibilité Amoureuse</h2>
+            <p style="font-size: 1.1em; margin-bottom: 1rem;">Découvrez votre compatibilité amoureuse avec votre partenaire ou votre âme sœur. Frederick propose une analyse approfondie basée sur vos énergies et vos signes astrologiques, accompagnée de conseils personnalisés pour renforcer votre relation.</p>
+            <a href="https://lien-compatibilite-amoureuse.com" class="cta-button compatibility-button" role="button" tabindex="0" aria-label="Compatibilité amoureuse">Cliquez ici</a>
+        </div>
+
+        <!-- Titre pour les boutons du bas -->
+        <h2 style="font-family: 'Cinzel', serif; font-size: 1.8em; color: #87CEFA; margin-bottom: 1rem;">Voyance par Email Amour</h2>
 
         <!-- Boutons de voyance par email existants -->
         <a id="cta-1-question" href="https://buy.stripe.com/14kdRe0EQ4iH1uoaFa" class="cta-button prix" role="button" tabindex="0" aria-label="Achetez une consultation par e-mail pour 1 question au prix de 6 euros" data-category="CTA" data-action="click" data-label="1-question">1 Question - <span class="price">6,00€</span></a>
