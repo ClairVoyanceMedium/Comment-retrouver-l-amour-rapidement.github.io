@@ -381,20 +381,20 @@
     </script>
 
   <!-- Politique de sécurité de contenu (CSP) -->
-  <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'nonce-YOUR_NONCE_HERE';
-  style-src 'self' https://fonts.googleapis.com 'nonce-YOUR_NONCE_HERE';
-  font-src 'self' https://fonts.gstatic.com;
-  img-src 'self' https://i.imgur.com data:;
-  connect-src 'self' https://www.google-analytics.com;
-  frame-src 'none';
-  object-src 'none';
-  base-uri 'self';
-  form-action 'self';
-  frame-ancestors 'none';
-  upgrade-insecure-requests;
-  report-uri https://clairvoyancemedium.github.io/csp-report-endpoint;">
+   <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline';
+    style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' https://i.imgur.com data:;
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com;
+    frame-src https://js.stripe.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+    report-uri https://clairvoyancemedium.github.io/csp-report-endpoint;">
 </head>
 <body>
   <!-- Balise Google Ads Universelle avec Remarketing et Suivi des Conversions -->
