@@ -382,25 +382,18 @@
 
   <!-- Politique de sécurité de contenu (CSP) -->
   <meta http-equiv="Content-Security-Policy" content="
-  default-src 'none';
-  script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com;
-  style-src 'self' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
-  img-src 'self' https://i.imgur.com data:;
-  connect-src 'self' https://www.google-analytics.com;
-  manifest-src 'self';
-  worker-src 'self';
-  media-src 'none';
-  child-src 'none';
-  frame-src 'none';
-  object-src 'none';
-  base-uri 'self';
-  form-action 'self';
-  frame-ancestors 'none';
-  upgrade-insecure-requests;
-  block-all-mixed-content;
-  trusted-types 'none';
-  require-trusted-types-for 'script';
+  default-src 'self'; 
+  script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; 
+  style-src 'self' https://fonts.googleapis.com; 
+  font-src 'self' https://fonts.gstatic.com; 
+  img-src 'self' https://i.imgur.com data:; 
+  connect-src 'self' https://www.google-analytics.com; 
+  frame-src 'none'; 
+  object-src 'none'; 
+  base-uri 'self'; 
+  form-action 'self'; 
+  frame-ancestors 'none'; 
+  upgrade-insecure-requests; 
   report-uri https://clairvoyancemedium.github.io/csp-report-endpoint;">
 </head>
 <body>
