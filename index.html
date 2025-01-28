@@ -870,15 +870,28 @@
     }
 
     // Suivi des clics (Google Ads / Analytics)
-    function trackClick(label) {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'click', {
-          'event_category': 'CTA',
-          'event_label': label
-        });
-      }
+    function trackClick(label, category = 'CTA', value = null) {
+    // Suivi Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'click', {
+        'event_category': category,
+        'event_label': label,
+        'value': value,
+      });
     }
-  </script>
+
+    // Suivi Google Ads (conversion tracking)
+    if (typeof gtag !== 'undefined' && value !== null) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-00000000000/CONVERSION_LABEL', // Remplacez par votre Conversion ID et label
+        'value': value,
+        'currency': 'EUR'
+      });
+    }
+
+    console.log(`Tracking Click: ${label}`);
+  }
+</script>
 
 </body>
 </html>
