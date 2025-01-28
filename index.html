@@ -91,8 +91,34 @@
   .scintillant { display: inline-block; color: var(--gold); font-weight: bold; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: etoiles 4s ease-in-out infinite; margin-top: 2rem; } 
   @keyframes etoiles { 0% { background-position: 200%; } 80% { background-position: -200%; } 100% { background-position: -200%; } } 
   @media (max-width: 767px) { body { font-size: 14px; } h1 { font-size: 1.6em; } .cta-button { font-size: 1em; padding: .5rem 1rem; } .logo { width: 80%; } }
-
   
+  @media (max-width: 767px) {
+  .highlighted-quote {
+    font-size: 1.2rem; /* Réduction de la taille de la police */
+    padding: 1rem; /* Espacement réduit */
+  }
+}
+
+  .quote-section {
+  background-color: #111; /* Fond sombre pour le contraste */
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem auto;
+  max-width: 800px; /* Largeur adaptée pour une lecture confortable */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre douce */
+}
+
+.highlighted-quote {
+  font-family: 'Playfair Display', serif; /* Typographie élégante */
+  font-size: 1.5rem; /* Taille de police augmentée */
+  color: #FFD700; /* Texte doré */
+  text-align: center; /* Centrage */
+  line-height: 1.8; /* Espacement pour lisibilité */
+  font-style: italic; /* Style pour donner une touche émotionnelle */
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Effet de brillance légère */
+}
+
+    
     
   </style>
 
