@@ -389,6 +389,44 @@
 }
 </script>
 
+    <!-- Balise JSON-LD Speakable optimisée -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      "header h1", 
+      "main p", 
+      "main blockquote", 
+      "main .cta-button", 
+      "main .tarifs ul", 
+      "footer p",
+      "footer a"
+    ],
+    "xpath": [
+      "/html/body/header/h1",
+      "/html/body/main/p",
+      "/html/body/main/blockquote",
+      "/html/body/main//a[contains(@class, 'cta-button')]",
+      "/html/body/main//ul[contains(@class, 'tarifs')]",
+      "/html/body/footer/p",
+      "/html/body/footer/a"
+    ]
+  },
+  "inLanguage": [
+    "fr-FR", "en-US", "es-ES", "pt-BR", "zh-CN", "hi-IN", 
+    "ar-SA", "ru-RU", "it-IT", "de-DE", "ja-JP", "ko-KR", 
+    "vi-VN", "tr-TR", "pl-PL", "nl-NL", "id-ID", "th-TH", 
+    "ms-MY", "fa-IR", "uk-UA", "ro-RO", "hu-HU", "sv-SE", 
+    "fi-FI", "no-NO", "cs-CZ", "da-DK", "el-GR", "bg-BG", 
+    "he-IL", "lt-LT", "lv-LV", "sk-SK", "hr-HR", "sr-RS", 
+    "sl-SI", "et-EE", "sq-AL", "az-AZ", "ka-GE", "bn-BD", 
+    "ta-IN"
+  ]
+}
+</script>
   
     <!-- JSON-LD pour Product -->
     <script type="application/ld+json">
