@@ -614,7 +614,7 @@
     <!-- Bouton Favoris -->
     <div style="text-align: center; margin-top: 20px;">
       <button id="favorite-button"
-              onclick="addToFavorites()"
+              onclick="addToFavorites(); trackClick('Ajout Favoris', 'Interaction', 0)"
               style="background: none; border: none; cursor: pointer;"
               aria-label="Ajouter ce site à vos favoris"
               aria-pressed="false">
