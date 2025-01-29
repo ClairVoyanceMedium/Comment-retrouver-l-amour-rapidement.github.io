@@ -636,6 +636,7 @@
   <div class="skeleton-loader"></div>
 
   <picture>
+    <!-- Format AVIF (Priorité si disponible) -->
     <source 
       srcset="https://i.imgur.com/oJX1wR5.avif 300w,
               https://i.imgur.com/oJX1wR5.avif 600w,
@@ -645,6 +646,7 @@
              1200px"
       type="image/avif">
 
+    <!-- Format WebP (Fallback si AVIF non supporté) -->
     <source 
       srcset="https://i.imgur.com/oJX1wR5.webp 300w,
               https://i.imgur.com/oJX1wR5.webp 600w,
@@ -654,6 +656,7 @@
              1200px"
       type="image/webp">
 
+    <!-- Format JPEG (Dernier recours) -->
     <source 
       srcset="https://i.imgur.com/oJX1wR5.jpg 300w,
               https://i.imgur.com/oJX1wR5.jpg 600w,
@@ -663,6 +666,7 @@
              1200px"
       type="image/jpeg">
 
+    <!-- Image principale -->
     <img 
       src="https://i.imgur.com/oJX1wR5.jpg"
       alt="Rituel sentimental puissant : Amour, Connexion et Énergie Spirituelle"
@@ -679,6 +683,29 @@
   </figcaption>
 
 </figure>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ImageObject",
+  "contentUrl": "https://i.imgur.com/oJX1wR5.jpg",
+  "representativeOfPage": true,
+  "thumbnailUrl": "https://i.imgur.com/oJX1wR5.webp",
+  "name": "Rituel sentimental puissant : Amour, Connexion et Énergie Spirituelle",
+  "description": "Illustration d'un rituel sentimental : un couple en connexion spirituelle exprimant amour et énergie positive.",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "creator": {
+    "@type": "Organization",
+    "name": "Clairvoyance Medium",
+    "url": "https://www.clairvoyancemedium.com"
+  },
+  "keywords": "rituel sentimental, amour, connexion spirituelle, énergie positive, voyance, guidance",
+  "uploadDate": "2025-01-29",
+  "width": "1200",
+  "height": "600"
+}
+</script>
+
     
   </header>
 
