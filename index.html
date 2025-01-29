@@ -629,6 +629,57 @@
 </span>
       </button>
     </div>
+
+<figure id="rituel-image" aria-labelledby="caption-rituel" aria-describedby="caption-rituel">
+  
+  <!-- Effet Skeleton Loader pour un chargement fluide -->
+  <div class="skeleton-loader"></div>
+
+  <picture>
+    <source 
+      srcset="https://i.imgur.com/oJX1wR5.avif 300w,
+              https://i.imgur.com/oJX1wR5.avif 600w,
+              https://i.imgur.com/oJX1wR5.avif 1200w"
+      sizes="(max-width: 320px) 300px,
+             (max-width: 768px) 600px,
+             1200px"
+      type="image/avif">
+
+    <source 
+      srcset="https://i.imgur.com/oJX1wR5.webp 300w,
+              https://i.imgur.com/oJX1wR5.webp 600w,
+              https://i.imgur.com/oJX1wR5.webp 1200w"
+      sizes="(max-width: 320px) 300px,
+             (max-width: 768px) 600px,
+             1200px"
+      type="image/webp">
+
+    <source 
+      srcset="https://i.imgur.com/oJX1wR5.jpg 300w,
+              https://i.imgur.com/oJX1wR5.jpg 600w,
+              https://i.imgur.com/oJX1wR5.jpg 1200w"
+      sizes="(max-width: 320px) 300px,
+             (max-width: 768px) 600px,
+             1200px"
+      type="image/jpeg">
+
+    <img 
+      src="https://i.imgur.com/oJX1wR5.jpg"
+      alt="Rituel sentimental puissant : Amour, Connexion et Énergie Spirituelle"
+      width="1200" height="600"
+      loading="lazy"
+      decoding="async"
+      class="responsive-image lqip-blur"
+      fetchpriority="high"
+      onload="this.classList.add('loaded')">
+  </picture>
+
+  <figcaption id="caption-rituel" class="visually-hidden">
+    Illustration d'un rituel sentimental : un couple en connexion spirituelle exprimant amour et énergie positive.
+  </figcaption>
+
+</figure>
+    
   </header>
 
   <main>
