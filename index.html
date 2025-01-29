@@ -1000,22 +1000,39 @@ window.addEventListener('beforeinstallprompt', (event) => {
     deferredPrompt = event;
 
     // Afficher le bouton "Installer"
+    let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (event) => {
+    // Empêcher le navigateur d'afficher la bannière par défaut
+    event.preventDefault();
+    deferredPrompt = event;
+
+    // Afficher le bouton d’installation
     const installButton = document.getElementById('install-button');
-    installButton.style.display = 'block';
+    if (installButton) {
+        installButton.style.display = 'block';
 
-    installButton.addEventListener('click', () => {
-        installButton.style.display = 'none';
-        deferredPrompt.prompt();
+        // Quand l’utilisateur clique sur le bouton d’installation
+        installButton.addEventListener('click', () => {
+            installButton.style.display = 'none'; // Cacher le bouton après le clic
+            deferredPrompt.prompt(); // Afficher la boîte de dialogue d’installation
 
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('L’utilisateur a installé l’application');
-            } else {
-                console.log('L’utilisateur a refusé l’installation');
-            }
-            deferredPrompt = null;
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('✅ L\'utilisateur a installé l\'application');
+                } else {
+                    console.log('❌ L\'utilisateur a annulé l\'installation');
+                }
+                deferredPrompt = null;
+            });
         });
-    });
+    }
+});
+
+// Vérifier si l'application est déjà installée (pour cacher le bouton)
+window.addEventListener('appinstalled', () => {
+    console.log('🎉 L\'application est installée !');
+    document.getElementById('install-button').style.display = 'none';
 });
 
 </script>
