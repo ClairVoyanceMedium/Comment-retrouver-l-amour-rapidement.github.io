@@ -1,13 +1,19 @@
 {
-  "name": "Voyance ClairvoyanceMedium",
+  "name": "Voyance Amour",
   "short_name": "Voyance",
-  "start_url": "/",
+  "description": "Découvrez les rituels sentimentaux puissants pour retrouver l'amour",
+  "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#000",
-  "theme_color": "#000",
+  "background_color": "#000000",
+  "theme_color": "#FF69B4",
   "icons": [
     {
-      "src": "/favicon_optimized.png",
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
