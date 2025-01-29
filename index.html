@@ -629,10 +629,22 @@
 </span>
       </button>
     </div>
-    <img src="https://i.imgur.com/oJX1wR5.webp" 
-     alt="Rituel sentimental puissant : Amour, Connexion et Énergie Spirituelle"
-     width="1200" height="600"
-     loading="lazy">
+    
+    <picture>
+    <!-- Format AVIF (Prioritaire si supporté, ultra-rapide) -->
+    <source srcset="https://i.imgur.com/oJX1wR5.avif" type="image/avif">
+
+    <!-- Format WebP (Fallback haute qualité) -->
+    <source srcset="https://i.imgur.com/oJX1wR5.webp" type="image/webp">
+
+    <!-- Format PNG (Dernier recours si aucun autre format n'est supporté) -->
+    <img src="https://i.imgur.com/oJX1wR5.png" 
+         alt="Rituel sentimental puissant : Amour, Connexion et Énergie Spirituelle"
+         width="1200" height="600"
+         loading="lazy"
+         style="max-width: 100%; height: auto; display: block;">
+</picture>
+
 
   </header>
 
