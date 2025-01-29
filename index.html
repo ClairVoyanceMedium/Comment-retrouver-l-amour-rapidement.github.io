@@ -981,15 +981,11 @@
 </script>
   
 <script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/sw.js")
-      .then((registration) => {
-        console.log("Service Worker enregistré avec succès !", registration);
-      })
-      .catch((error) => {
-        console.log("Service Worker échec d'enregistrement :", error);
-      });
-  }
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Service Worker enregistré avec succès !', reg))
+        .catch(err => console.log('Erreur lors de l’enregistrement du Service Worker :', err));
+}
 </script>
 
 </body>
