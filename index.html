@@ -629,20 +629,27 @@
 </span>
       </button>
     </div>
-    
     <picture>
-    <!-- Format AVIF (Prioritaire si supporté, ultra-rapide) -->
-    <source srcset="https://i.imgur.com/oJX1wR5.avif" type="image/avif">
-
-    <!-- Format WebP (Fallback haute qualité) -->
-    <source srcset="https://i.imgur.com/oJX1wR5.webp" type="image/webp">
-
-    <!-- Format PNG (Dernier recours si aucun autre format n'est supporté) -->
-    <img src="https://i.imgur.com/oJX1wR5.png" 
-         alt="Rituel sentimental puissant : Amour, Connexion et Énergie Spirituelle"
-         width="1200" height="600"
-         loading="lazy"
-         style="max-width: 100%; height: auto; display: block;">
+  <source srcset="https://imgur.com/oJX1wR5-300w.webp 300w,
+                  https://imgur.com/oJX1wR5-600w.webp 600w,
+                  https://imgur.com/oJX1wR5-1200w.webp 1200w"
+          sizes="(max-width: 320px) 300px,
+                 (max-width: 768px) 600px,
+                 1200px"
+          type="image/webp"
+          fetchpriority="high">
+  <source srcset="https://imgur.com/oJX1wR5-300w.jpg 300w,
+                  https://imgur.com/oJX1wR5-600w.jpg 600w,
+                  https://imgur.com/oJX1wR5-1200w.jpg 1200w"
+          sizes="(max-width: 320px) 300px,
+                 (max-width: 768px) 600px,
+                 1200px"
+          type="image/jpeg">
+  <img src="https://imgur.com/oJX1wR5-1200w.jpg"
+       alt="Rituel sentimental - Amour et connexion profonde"
+       width="1200" height="600"
+       loading="lazy" decoding="async"
+       style="max-width: 100%; height: auto; display: block; aspect-ratio: 1200/600;">
 </picture>
 
 
