@@ -1,0 +1,15 @@
+{
+  "name": "Voyance ClairvoyanceMedium",
+  "short_name": "Voyance",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000",
+  "theme_color": "#000",
+  "icons": [
+    {
+      "src": "/favicon_optimized.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
