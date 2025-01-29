@@ -632,72 +632,87 @@
     <br>
     <br>
     <br>
-    <head>
-  <!-- Image optimisée avec SEO, rapidité et accessibilité -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Ajout du code HTML dans le body après chargement du DOM
-      const figure = document.createElement("figure");
-      figure.id = "rituel-image";
-      figure.setAttribute("aria-labelledby", "caption-rituel");
-      figure.setAttribute("aria-describedby", "caption-rituel");
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rituel Sentimental - Attirer l'Amour & Renforcer les Liens</title>
+  <meta name="description" content="Découvrez la puissance des rituels sentimentaux pour attirer l'amour et renforcer vos liens affectifs. Une illustration d’un couple en connexion spirituelle.">
+  <meta name="keywords" content="rituel sentimental, amour, connexion spirituelle, énergie positive, voyance, guidance">
+  <meta name="robots" content="index, follow">
 
-      figure.innerHTML = `
-        <picture>
-          <source srcset="https://i.imgur.com/YztdLYq.webp" type="image/webp">
-          <img src="https://i.imgur.com/YztdLYq.jpeg" 
-               alt="Rituel sentimental puissant : Amour, Connexion et Énergie Spirituelle"
-               width="1200" height="600"
-               loading="lazy"
-               decoding="async"
-               fetchpriority="high"
-               importance="high"
-               style="max-width: 100%; height: auto; display: block;">
-        </picture>
-        <figcaption id="caption-rituel" class="visually-hidden">
-          Illustration d'un rituel sentimental : Un couple en connexion spirituelle exprimant amour et énergie positive.
-        </figcaption>
-      `;
+  <!-- Préchargement de l'image WebP pour accélérer le rendu -->
+  <link rel="preload" as="image" href="https://i.imgur.com/YztdLYq.webp" type="image/webp">
+  
+  <!-- SEO Open Graph / Twitter Cards -->
+  <meta property="og:title" content="Rituel Sentimental - Attirer l'Amour & Renforcer les Liens">
+  <meta property="og:description" content="Découvrez comment les rituels sentimentaux peuvent influencer votre vie amoureuse.">
+  <meta property="og:image" content="https://i.imgur.com/YztdLYq.webp">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rituel Sentimental - Attirer l'Amour & Renforcer les Liens">
+  <meta name="twitter:description" content="Découvrez comment les rituels sentimentaux peuvent influencer votre vie amoureuse.">
+  <meta name="twitter:image" content="https://i.imgur.com/YztdLYq.webp">
 
-      document.body.prepend(figure);
+  <!-- Styles -->
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    figure {
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: auto;
+    }
+  </style>
+</head>
 
-      // Ajout des styles CSS dynamiquement
-      const style = document.createElement("style");
-      style.innerHTML = `
-        .visually-hidden {
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          white-space: nowrap;
-          border: 0;
-        }
-      `;
-      document.head.appendChild(style);
+<body>
+  <figure id="rituel-image" aria-labelledby="caption-rituel" aria-describedby="caption-rituel">
+    <picture>
+      <!-- Priorité au WebP pour les navigateurs modernes -->
+      <source srcset="https://i.imgur.com/YztdLYq.webp" type="image/webp">
+      <!-- Fallback JPEG pour compatibilité universelle -->
+      <img src="https://i.imgur.com/YztdLYq.jpeg" 
+           alt="Rituel sentimental puissant : Amour, Connexion et Énergie Spirituelle"
+           width="1200" height="600"
+           loading="lazy"
+           decoding="async"
+           fetchpriority="high"
+           importance="high">
+    </picture>
 
-      // JSON-LD pour Google SEO & Assistants Vocaux (Speakable)
-      const jsonLd = {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "speakable": {
-          "@type": "SpeakableSpecification",
-          "cssSelector": ["#caption-rituel"],
-          "xpath": ["/html/body/figure/figcaption"]
-        },
-        "name": "Rituel sentimental puissant",
-        "description": "Découvrez la puissance des rituels sentimentaux pour attirer l'amour et renforcer vos liens affectifs. Une illustration d’un couple en connexion spirituelle.",
-        "inLanguage": "fr-FR"
-      };
+    <figcaption id="caption-rituel" class="visually-hidden">
+      Illustration d'un rituel sentimental : Un couple en connexion spirituelle exprimant amour et énergie positive.
+    </figcaption>
+  </figure>
 
-      // Injection du JSON-LD dans <head>
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.textContent = JSON.stringify(jsonLd);
-      document.head.appendChild(script);
-    });
+  <!-- JSON-LD Speakable pour assistants vocaux (Google Assistant, Siri, Alexa) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["#caption-rituel"],
+      "xpath": ["/html/body/figure/figcaption"]
+    },
+    "name": "Rituel sentimental puissant",
+    "description": "Découvrez la puissance des rituels sentimentaux pour attirer l'amour et renforcer vos liens affectifs. Une illustration d’un couple en connexion spirituelle.",
+    "inLanguage": "fr-FR"
+  }
   </script>
 
   </header>
