@@ -457,8 +457,6 @@
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'self';
-    default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
-    script-src 'self' 'unsafe-inline' 'unsafe-eval';
     upgrade-insecure-requests;">
 </head>
 <body>
@@ -788,14 +786,6 @@
       </p>
     </section>
 
-<!-- Bouton d'installation PWA -->
-<button id="installButton" 
-        class="cta-button" 
-        style="display: none; margin: 20px auto;"
-        aria-label="Installer l'application">
-  Installer l'App ⚡
-</button>
-    
     <section style="margin-bottom: 2rem;">
       <h2>Voyance par Email : l'Option Amour</h2>
       <p>
@@ -997,56 +987,6 @@
         .catch(err => console.log('Erreur lors de l’enregistrement du Service Worker :', err));
 }
 </script>
-<script>
-// Gestion de l'installation PWA
-let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  const installButton = document.getElementById('installButton');
-  if(installButton) installButton.style.display = 'block';
-});
-
-document.getElementById('installButton').addEventListener('click', async () => {
-  if(deferredPrompt) {
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    if(outcome === 'accepted') {
-      trackClick('PWA Install', 'Install', 0);
-    }
-    deferredPrompt = null;
-  } else {
-    showInstallInstructions();
-  }
-});
-
-function showInstallInstructions() {
-  const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const isAndroid = /Android/.test(navigator.userAgent);
-
-  let message = "Pour installer l'application :\n";
-  if(isiOS) {
-    message += "1. Appuyez sur le bouton Partager (icône de boîte avec flèche)\n";
-    message += "2. Sélectionnez 'Sur l'écran d'accueil'\n";
-    message += "3. Confirmez l'ajout";
-  } else if(isAndroid) {
-    message += "1. Ouvrez le menu du navigateur (⋮)\n";
-    message += "2. Sélectionnez 'Installer l'app'\n";
-    message += "3. Confirmez l'installation";
-  } else {
-    message += "Utilisez le menu de votre navigateur pour installer cette application";
-  }
-  
-  alert(message);
-}
-
-// Vérification de l'installation PWA
-window.addEventListener('appinstalled', () => {
-  console.log('App installée avec succès !');
-  document.getElementById('installButton').style.display = 'none';
-});
-</script>
-  
 </body>
 </html>
