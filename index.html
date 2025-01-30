@@ -981,8 +981,10 @@
   </footer>
 
   <script>
-    // Mise à jour de l'année courante
+  // Attendre que le DOM soit complètement chargé avant d'exécuter le script
+  document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("current-year").textContent = new Date().getFullYear();
+  });
 
     // Génération dynamique des étoiles
     const starsContainer = document.querySelector('.stars');
