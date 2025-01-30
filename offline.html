@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hors Ligne - Clairvoyance Medium</title>
+    <meta name="description" content="Vous êtes actuellement hors ligne. Veuillez vérifier votre connexion pour accéder à tout le contenu.">
+    
+    <!-- Styles de base -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: #ffffff;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            color: #FFD700;
+        }
+        p {
+            font-size: 18px;
+        }
+        .logo {
+            max-width: 150px;
+            margin: 20px auto;
+            display: block;
+        }
+        .retry-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .retry-button:hover {
+            background: #ff1493;
+        }
+    </style>
+</head>
+<body>
+    <img src="/favicon_optimized.png" alt="Logo Clairvoyance Medium" class="logo">
+    <h1>🔮 Vous êtes hors ligne</h1>
+    <p>Il semble que vous n'ayez pas de connexion Internet. Veuillez vérifier votre connexion et réessayer.</p>
+
+    <!-- Bouton pour recharger la page -->
+    <button class="retry-button" onclick="location.reload();">🔄 Réessayer</button>
+
+    <!-- Astuces pour aider l'utilisateur -->
+    <p>🔹 Vérifiez votre connexion Wi-Fi ou réseau mobile.</p>
+    <p>🔹 Si vous êtes sur mobile, activez les données mobiles.</p>
+    <p>🔹 Si le problème persiste, essayez de redémarrer votre routeur.</p>
+
+    <p style="margin-top: 20px;">📅 Dernière mise à jour du cache : <span id="cache-date">...</span></p>
+
+    <script>
+        // Affiche la date de la dernière mise à jour du cache
+        document.getElementById("cache-date").textContent = new Date(document.lastModified).toLocaleString();
+    </script>
+</body>
+</html>
 
