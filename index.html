@@ -614,7 +614,7 @@
     <br>
 
     <div class="top-rank">
-  <span class="number-one">Nº 1 sur le web</span>
+  <span class="number-one">Nº 1 sur le web encore en <span id="current-year"></span></span>
   <span class="thank-you">Merci !</span>
 </div>
     <br>
@@ -1050,5 +1050,10 @@
   }
 </script>
 
+  <script>
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+</body>
+  
 </body>
 </html>
