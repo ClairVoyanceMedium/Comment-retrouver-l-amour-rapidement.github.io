@@ -449,21 +449,19 @@
 
 
   <!-- Politique de sécurité de contenu (CSP) -->
-  <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self';
-  script-src 'self' 'nonce-{{nonce}}' https://www.googletagmanager.com https://www.google-analytics.com;
-  style-src 'self' 'sha256-{{styleHash}}' https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
-  img-src 'self' https://i.imgur.com https://www.googleadservices.com;
-  connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net;
-  frame-src 'self' https://js.stripe.com https://www.googletagmanager.com;
-  object-src 'none';
-  base-uri 'self';
-  form-action 'self' https://secure-payment.com;
-  frame-ancestors 'self';
-  upgrade-insecure-requests;
-  report-uri /csp-report-endpoint;
-">
+     <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com 'unsafe-inline';
+    style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' https://i.imgur.com https://www.googleadservices.com data:;
+    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;
+    frame-src 'self' https://js.stripe.com https://www.googletagmanager.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'self';
+    upgrade-insecure-requests;">
 
 </head>
 <body>
