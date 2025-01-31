@@ -449,10 +449,10 @@
 
 
   <!-- Politique de sécurité de contenu (CSP) -->
-    <meta http-equiv="Content-Security-Policy" content="
+    <meta id="csp-meta" http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    script-src 'self' 'nonce-DYNAMIC_NONCE' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com;
+    style-src 'self' 'nonce-DYNAMIC_NONCE' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' https://i.imgur.com https://www.googleadservices.com;
     connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net;
@@ -461,8 +461,7 @@
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'self';
-    upgrade-insecure-requests;
-    report-uri /csp-violation-endpoint;">
+    upgrade-insecure-requests;">
 
 </head>
 <body>
@@ -1049,6 +1048,28 @@
     };
 });
 </script>
-      
+  
+<script>
+    // Génère un nonce sécurisé (aléatoire à chaque chargement)
+    function generateNonce() {
+        return btoa(window.crypto.getRandomValues(new Uint8Array(16)).reduce((s, b) => s + String.fromCharCode(b), ''));
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let nonce = generateNonce();
+
+        // Met à jour la CSP pour qu'elle autorise ce nonce
+        let cspMeta = document.getElementById("csp-meta");
+        if (cspMeta) {
+            cspMeta.setAttribute("content", cspMeta.getAttribute("content").replace(/DYNAMIC_NONCE/g, nonce));
+        }
+
+        // Ajoute le nonce à tous les scripts inline existants
+        document.querySelectorAll("script:not([src])").forEach(script => {
+            script.setAttribute("nonce", nonce);
+        });
+    });
+</script>
+
 </body>
 </html>
