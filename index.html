@@ -980,73 +980,69 @@
 
   <script>
     // Mise à jour de l'année courante
-    document.getElementById("current-year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", function() {
+    var yearElement = document.getElementById("current-year");
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
 
-  
-    // Génération dynamique des étoiles
+    // Vérification et ajout des étoiles dynamiques
     const starsContainer = document.querySelector('.stars');
-    const starCount = 30; // Nombre ajusté pour les performances
-    for (let i = 0; i < starCount; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDelay = Math.random() * 2 + 's';
-      starsContainer.appendChild(star);
+    if (starsContainer) {
+        const starCount = 30;
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            starsContainer.appendChild(star);
+        }
     }
 
-    // Génération des étoiles filantes
+    // Ajout des étoiles filantes
     const shootingStarsContainer = document.getElementById('shooting-stars-container');
-    const shootingStarCount = 5;
-    for (let i = 0; i < shootingStarCount; i++) {
-      const shootingStar = document.createElement('div');
-      shootingStar.classList.add('shooting-star');
-      shootingStar.style.top = Math.random() * 100 + '%';
-      shootingStar.style.left = Math.random() * 100 + '%';
-      shootingStar.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      shootingStarsContainer.appendChild(shootingStar);
+    if (shootingStarsContainer) {
+        const shootingStarCount = 5;
+        for (let i = 0; i < shootingStarCount; i++) {
+            const shootingStar = document.createElement('div');
+            shootingStar.classList.add('shooting-star');
+            shootingStar.style.top = Math.random() * 100 + '%';
+            shootingStar.style.left = Math.random() * 100 + '%';
+            shootingStar.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            shootingStarsContainer.appendChild(shootingStar);
+        }
     }
 
-    // Fonction d’ajout aux favoris
-    function addToFavorites() {
-      const text = document.getElementById("favorite-text");
-      const button = document.getElementById("favorite-button");
+    // Fonction ajout aux favoris
+    window.addToFavorites = function() {
+        const text = document.getElementById("favorite-text");
+        const button = document.getElementById("favorite-button");
 
-      text.innerHTML = "⭐ Ajouté à vos favoris !";
-      text.style.color = "#FFD700";
-      button.setAttribute("aria-pressed", "true");
+        text.innerHTML = "⭐ Ajouté à vos favoris !";
+        text.style.color = "#FFD700";
+        button.setAttribute("aria-pressed", "true");
 
-      if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-        alert("Appuyez sur le bouton de partage (en bas), puis sur 'Ajouter à l'écran d'accueil'.");
-      } else if (navigator.userAgent.match(/Android/i)) {
-        alert("Appuyez sur le menu (⋮) en haut à droite, puis sur 'Ajouter à l'écran d'accueil'.");
-      } else {
-        alert("Appuyez sur Ctrl + D (ou Command + D sur Mac) pour ajouter ce site à vos favoris.");
-      }
-    }
+        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+            alert("Appuyez sur le bouton de partage (en bas), puis sur 'Ajouter à l'écran d'accueil'.");
+        } else if (navigator.userAgent.match(/Android/i)) {
+            alert("Appuyez sur le menu (⋮) en haut à droite, puis sur 'Ajouter à l'écran d'accueil'.");
+        } else {
+            alert("Appuyez sur Ctrl + D (ou Command + D sur Mac) pour ajouter ce site à vos favoris.");
+        }
+    };
 
-    // Suivi des clics (Google Ads / Analytics)
-    function trackClick(label, category = 'CTA', value = null) {
-    // Suivi Google Analytics 4
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'click', {
-        'event_category': category,
-        'event_label': label,
-        'value': value,
-      });
-    }
-
-    // Suivi Google Ads (conversion tracking)
-    if (typeof gtag !== 'undefined' && value !== null) {
-      gtag('event', 'conversion', {
-        'send_to': 'AW-00000000000/CONVERSION_LABEL', // Remplacez par votre Conversion ID et label
-        'value': value,
-        'currency': 'EUR'
-      });
-    }
-
-    console.log(`Tracking Click: ${label}`);
-  }
+    // Fonction de suivi des clics
+    window.trackClick = function(label, category = 'CTA', value = null) {
+        if (typeof gtag === 'function') {
+            gtag('event', 'click', {
+                'event_category': category,
+                'event_label': label,
+                'value': value,
+            });
+        }
+    };
+});
 </script>
       
 </body>
