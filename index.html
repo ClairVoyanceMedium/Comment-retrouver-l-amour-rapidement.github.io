@@ -1049,30 +1049,5 @@
 });
 </script>
 
-<script src="js/favoris.js" defer></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        let nonce = btoa(window.crypto.getRandomValues(new Uint8Array(16)).reduce((s, b) => s + String.fromCharCode(b), ''));
-
-        // Ajoute le nonce aux scripts inline sauf ceux qui gèrent l'affichage de l'année et "Ajouter aux favoris"
-        document.querySelectorAll("script:not([src])").forEach(script => {
-            if (!script.innerText.includes("current-year") && !script.innerText.includes("favorite-button")) {
-                script.setAttribute("nonce", nonce);
-            }
-        });
-
-        // Met à jour la CSP pour que le nonce soit autorisé
-        let cspMeta = document.getElementById("csp-meta");
-        if (cspMeta) {
-            cspMeta.setAttribute("content", cspMeta.getAttribute("content").replace("'unsafe-inline'", `'nonce-${nonce}'`));
-        }
-
-        // Vérification de la mise à jour de l'année
-        let yearElements = document.querySelectorAll("#current-year");
-        yearElements.forEach(el => el.textContent = new Date().getFullYear());
-    });
-</script>
-
 </body>
 </html>
