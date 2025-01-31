@@ -451,18 +451,17 @@
   <!-- Politique de sécurité de contenu (CSP) -->
    <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
-  script-src 'self' 'nonce-random123' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com;
-  style-src 'self' https://fonts.googleapis.com 'sha256-xyz123';
+  script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
   font-src 'self' https://fonts.gstatic.com;
   img-src 'self' https://i.imgur.com;
-  connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;
+  connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net;
   frame-src 'self' https://js.stripe.com https://www.googletagmanager.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self' https://secure-payment.com;
   frame-ancestors 'self';
   upgrade-insecure-requests;
-  require-trusted-types-for 'script';
 ">
 
 </head>
