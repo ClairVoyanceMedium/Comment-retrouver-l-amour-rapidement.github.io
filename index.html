@@ -451,8 +451,8 @@
   <!-- Politique de sécurité de contenu (CSP) -->
     <meta id="csp-meta" http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'nonce-DYNAMIC_NONCE' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com;
-    style-src 'self' 'nonce-DYNAMIC_NONCE' https://fonts.googleapis.com;
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' https://i.imgur.com https://www.googleadservices.com;
     connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net;
@@ -1050,24 +1050,25 @@
 </script>
   
 <script>
-    // Génère un nonce sécurisé (aléatoire à chaque chargement)
-    function generateNonce() {
-        return btoa(window.crypto.getRandomValues(new Uint8Array(16)).reduce((s, b) => s + String.fromCharCode(b), ''));
-    }
-
     document.addEventListener("DOMContentLoaded", function () {
-        let nonce = generateNonce();
+        let nonce = btoa(window.crypto.getRandomValues(new Uint8Array(16)).reduce((s, b) => s + String.fromCharCode(b), ''));
 
-        // Met à jour la CSP pour qu'elle autorise ce nonce
+        // Ajoute le nonce aux scripts inline sauf ceux qui gèrent l'affichage de l'année et "Ajouter aux favoris"
+        document.querySelectorAll("script:not([src])").forEach(script => {
+            if (!script.innerText.includes("current-year") && !script.innerText.includes("favorite-button")) {
+                script.setAttribute("nonce", nonce);
+            }
+        });
+
+        // Met à jour la CSP pour que le nonce soit autorisé
         let cspMeta = document.getElementById("csp-meta");
         if (cspMeta) {
-            cspMeta.setAttribute("content", cspMeta.getAttribute("content").replace(/DYNAMIC_NONCE/g, nonce));
+            cspMeta.setAttribute("content", cspMeta.getAttribute("content").replace("'unsafe-inline'", `'nonce-${nonce}'`));
         }
 
-        // Ajoute le nonce à tous les scripts inline existants
-        document.querySelectorAll("script:not([src])").forEach(script => {
-            script.setAttribute("nonce", nonce);
-        });
+        // Vérification de la mise à jour de l'année
+        let yearElements = document.querySelectorAll("#current-year");
+        yearElements.forEach(el => el.textContent = new Date().getFullYear());
     });
 </script>
 
