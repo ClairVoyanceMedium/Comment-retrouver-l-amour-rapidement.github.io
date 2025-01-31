@@ -11,17 +11,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 text.style.color = "#FFD700";
                 btn.setAttribute("aria-pressed", "true");
 
-                if (window.sidebar && window.sidebar.addPanel) { 
-                    // Firefox
-                    window.sidebar.addPanel(document.title, window.location.href, "");
-                } else if (window.external && ('AddFavorite' in window.external)) { 
-                    // Internet Explorer
-                    window.external.AddFavorite(window.location.href, document.title);
-                } else if (window.opera && window.print) { 
-                    // Opera
-                    this.title = document.title;
-                } else { 
-                    // Autres navigateurs
+                if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+                    alert("Appuyez sur le bouton de partage (en bas), puis sur 'Ajouter à l'écran d'accueil'.");
+                } else if (navigator.userAgent.match(/Android/i)) {
+                    alert("Appuyez sur le menu (⋮) en haut à droite, puis sur 'Ajouter à l'écran d'accueil'.");
+                } else {
                     alert("Appuyez sur Ctrl + D (ou Command + D sur Mac) pour ajouter ce site à vos favoris.");
                 }
             } catch (e) {
