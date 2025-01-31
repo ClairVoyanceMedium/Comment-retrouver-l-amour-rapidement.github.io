@@ -964,25 +964,27 @@
   </main>
 
 
-<footer>
-        <br>
-        <br>
-        <a href="mailto:contact.clairvoyancemedium@gmail.com" target="_blank" rel="noopener noreferrer">CONTACT</a>
-        <br>
-        <br>
-        <a href="https://www.clairvoyancemedium.com/Conditions-Generales-des-Ventes-et-d-Utilisation-ccsaaaaaa.asp" target="_blank" rel="noopener noreferrer">
-  © <span id="current-year"></span> ClairVoyanceMedium.com - Tous droits réservés
-</a>
+<footer class="site-footer">
+    <a href="mailto:contact.clairvoyancemedium@gmail.com" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       onclick="if (typeof trackClick === 'function') trackClick('Contact Email', 'Interaction', 0);" 
+       style="display:block; margin-bottom: 0.5rem;"
+       aria-label="Envoyer un e-mail à ClairvoyanceMedium">
+       CONTACT
+    </a>
+    <p>© <span id="current-year"></span> ClairVoyanceMedium.com - Tous droits réservés</p>
+</footer>
 
 <script>
-  // Récupérer l'année en cours
-  const currentYear = new Date().getFullYear();
-  // Insérer l'année dans l'élément avec l'ID "current-year"
-  document.getElementById("current-year").textContent = currentYear;
+  document.addEventListener("DOMContentLoaded", function() {
+    var yearElement = document.getElementById("current-year");
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+  });
 </script>
-        <br>
-        <br>
-    </footer>
+
   
     // Génération dynamique des étoiles
     const starsContainer = document.querySelector('.stars');
