@@ -449,19 +449,20 @@
 
 
   <!-- Politique de sécurité de contenu (CSP) -->
-     <meta http-equiv="Content-Security-Policy" content="
+    <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com 'unsafe-inline';
-    style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com;
+    style-src 'self' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' https://i.imgur.com https://www.googleadservices.com data:;
+    img-src 'self' https://i.imgur.com https://www.googleadservices.com;
     connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;
     frame-src 'self' https://js.stripe.com https://www.googletagmanager.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'self';
-    upgrade-insecure-requests;">
+    upgrade-insecure-requests;
+    report-to csp-endpoint;">
 
 </head>
 <body>
