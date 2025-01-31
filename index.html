@@ -451,8 +451,8 @@
   <!-- Politique de sécurité de contenu (CSP) -->
     <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com 'strict-dynamic';
+    style-src 'self' https://fonts.googleapis.com 'sha256-xYzAbC123';
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' https://i.imgur.com https://www.googleadservices.com;
     connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net;
