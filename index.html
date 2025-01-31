@@ -981,10 +981,13 @@
   <script>
     // Mise à jour de l'année courante
     document.addEventListener("DOMContentLoaded", function() {
-    var yearElement = document.getElementById("current-year");
-    if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
-    }
+        // Sélectionner tous les éléments avec l'ID current-year
+        var yearElements = document.querySelectorAll("#current-year");
+        
+        // Mettre à jour chaque élément
+        yearElements.forEach(function(yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        });
 
     // Vérification et ajout des étoiles dynamiques
     const starsContainer = document.querySelector('.stars');
