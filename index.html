@@ -976,15 +976,6 @@
     <p>© <span id="current-year"></span> ClairVoyanceMedium.com - Tous droits réservés</p>
 </footer>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var yearElement = document.getElementById("current-year");
-    if (yearElement) {
-      yearElement.textContent = new Date().getFullYear();
-    }
-  });
-</script>
-
   
     // Génération dynamique des étoiles
     const starsContainer = document.querySelector('.stars');
@@ -1051,6 +1042,15 @@
     console.log(`Tracking Click: ${label}`);
   }
 </script>
-  
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var yearElement = document.getElementById("current-year");
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+  });
+</script>
+      
 </body>
 </html>
