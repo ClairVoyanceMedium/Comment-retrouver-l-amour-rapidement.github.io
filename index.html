@@ -964,17 +964,23 @@
   </main>
 
 
-<footer class="site-footer">
+<footer>
     <a href="mailto:contact.clairvoyancemedium@gmail.com" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       onclick="if (typeof trackClick === 'function') trackClick('Contact Email', 'Interaction', 0);" 
-       style="display:block; margin-bottom: 0.5rem;"
-       aria-label="Envoyer un e-mail à ClairvoyanceMedium">
-       CONTACT
+   target="_blank" 
+   rel="noopener noreferrer" 
+   onclick="trackClick('Contact Email', 'Interaction', 0)" 
+   style="display:block; margin-bottom: 0.5rem;">
+   CONTACT
+</a>
+    <a href="https://www.clairvoyancemedium.com/Conditions-Generales-des-Ventes-et-d-Utilisation-ccsaaaaaa.asp"
+       target="_blank" rel="noopener noreferrer">
+      © <span id="current-year"></span> ClairVoyanceMedium.com - Tous droits réservés
     </a>
-    <p>© <span id="current-year"></span> ClairVoyanceMedium.com - Tous droits réservés</p>
-</footer>
+  </footer>
+
+  <script>
+    // Mise à jour de l'année courante
+    document.getElementById("current-year").textContent = new Date().getFullYear();
 
   
     // Génération dynamique des étoiles
@@ -1041,15 +1047,6 @@
 
     console.log(`Tracking Click: ${label}`);
   }
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var yearElement = document.getElementById("current-year");
-    if (yearElement) {
-      yearElement.textContent = new Date().getFullYear();
-    }
-  });
 </script>
       
 </body>
