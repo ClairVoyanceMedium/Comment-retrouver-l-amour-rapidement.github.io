@@ -455,14 +455,13 @@
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' https://i.imgur.com https://www.googleadservices.com;
-    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;
+    connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net;
     frame-src 'self' https://js.stripe.com https://www.googletagmanager.com;
     object-src 'none';
     base-uri 'self';
-    form-action 'self';
+    form-action 'self' https://secure-payment.com;
     frame-ancestors 'self';
-    upgrade-insecure-requests;
-    report-to csp-endpoint;">
+    upgrade-insecure-requests;">
 
 </head>
 <body>
