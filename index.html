@@ -1059,46 +1059,5 @@
   });
 </script>
   
-<script nonce="48273">
-  // Définition des fonctions
-  function addToFavorites() {
-    const text = document.getElementById("favorite-text");
-    const button = document.getElementById("favorite-button");
-    text.innerHTML = "⭐ Ajouté à vos favoris !";
-    text.style.color = "#FFD700";
-    button.setAttribute("aria-pressed", "true");
-
-    if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-      alert("Appuyez sur le bouton de partage (en bas), puis sur 'Ajouter à l'écran d'accueil'.");
-    } else if (navigator.userAgent.match(/Android/i)) {
-      alert("Appuyez sur le menu (⋮) en haut à droite, puis sur 'Ajouter à l'écran d'accueil'.");
-    } else {
-      alert("Appuyez sur Ctrl + D (ou Command + D sur Mac) pour ajouter ce site à vos favoris.");
-    }
-  }
-
-  function trackClick(label, category = 'CTA', value = null) {
-    if (typeof gtag === 'function') {
-      gtag('event', 'click', {
-        'event_category': category,
-        'event_label': label,
-        'value': value,
-      });
-    }
-  }
-
-  // Attacher les gestionnaires d'événements après le chargement du DOM
-  document.addEventListener("DOMContentLoaded", function() {
-    // Pour le bouton "Ajouter à vos favoris"
-    const favoriteButton = document.getElementById("favorite-button");
-    if (favoriteButton) {
-      favoriteButton.addEventListener("click", function() {
-        addToFavorites();
-        trackClick('Ajout Favoris', 'Interaction', 0);
-      });
-    }
-  });
-</script>
-
 </body>
 </html>
