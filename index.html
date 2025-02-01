@@ -626,20 +626,20 @@
     <h1 aria-label="Retrouver l'amour grâce à la puissance des rituels à distance">Retrouver l'amour grâce à la puissance des rituels à distance</h1>
 
     <!-- Premier Bouton Favoris -->
-    <div style="text-align: center; margin-top: 20px;">
-      <button id="favorite-button"
-              style="background: none; border: none; cursor: pointer;"
-              aria-label="Ajouter ce site à vos favoris"
-              aria-pressed="false">
-        <span id="favorite-text"
-              style="font-family: Arial, sans-serif; font-size: 1em; color: var(--gold);">
-          Ajouter à vos favoris ⭐
-        </span>
-        <br>
-        <br>
-        <span style="color: #87CEEB; font-family: 'Cinzel', serif; text-decoration: underline; font-size: 1.2rem;">
-  www.clairvoyancemedium.com
-</span>
+    <!-- Bouton Favoris -->
+<div style="text-align: center; margin-top: 20px;">
+  <button class="favorite-button" aria-label="Ajouter ce site à vos favoris" aria-pressed="false">
+    <span class="favorite-text" style="font-family: Arial, sans-serif; font-size: 1em; color: var(--gold);">
+      Ajouter à vos favoris ⭐
+    </span>
+    <br><br>
+    <span style="color: #87CEEB; font-family: 'Cinzel', serif; text-decoration: underline; font-size: 1.2rem;">
+      www.clairvoyancemedium.com
+    </span>
+  </button>
+</div>
+    <br>
+    <br>
       </button>
     </div>
     <br>
@@ -835,22 +835,18 @@
       </p>
     </section>
     <!-- Deuxième Bouton Favoris -->
-    <div style="text-align: center; margin-top: 20px;">
-      <button id="favorite-button"
-              style="background: none; border: none; cursor: pointer;"
-              aria-label="Ajouter ce site à vos favoris"
-              aria-pressed="false">
-        <span id="favorite-text"
-              style="font-family: Arial, sans-serif; font-size: 1em; color: var(--gold);">
-          Ajouter à vos favoris ⭐
-        </span>
-        <br>
-        <br>
-        <span style="color: #87CEEB; font-family: 'Cinzel', serif; text-decoration: underline; font-size: 1.2rem;">
-  www.clairvoyancemedium.com
-</span>
-      </button>
-    </div>
+    <!-- Bouton Favoris -->
+<div style="text-align: center; margin-top: 20px;">
+  <button class="favorite-button" aria-label="Ajouter ce site à vos favoris" aria-pressed="false">
+    <span class="favorite-text" style="font-family: Arial, sans-serif; font-size: 1em; color: var(--gold);">
+      Ajouter à vos favoris ⭐
+    </span>
+    <br><br>
+    <span style="color: #87CEEB; font-family: 'Cinzel', serif; text-decoration: underline; font-size: 1.2rem;">
+      www.clairvoyancemedium.com
+    </span>
+  </button>
+</div>
     <br>
     <br>
     <section style="margin-bottom: 2rem;">
@@ -978,14 +974,14 @@
     </a>
   </footer>
 
- <script nonce="48273">
+  <script nonce="48273">
 document.addEventListener("DOMContentLoaded", function() {
   // Mise à jour de l'année courante
   document.querySelectorAll("#current-year").forEach(function(el) {
     el.textContent = new Date().getFullYear();
   });
 
-  // Ajout des étoiles dynamiques
+  // Ajout des étoiles dynamiques (si nécessaire)
   const starsContainer = document.querySelector('.stars');
   if (starsContainer) {
     const starCount = 30;
@@ -999,7 +995,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  // Ajout des étoiles filantes
+  // Ajout des étoiles filantes (si nécessaire)
   const shootingStarsContainer = document.getElementById('shooting-stars-container');
   if (shootingStarsContainer) {
     const shootingStarCount = 5;
