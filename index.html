@@ -1036,16 +1036,27 @@
     };
 
     // Fonction de suivi des clics
-    window.trackClick = function(label, category = 'CTA', value = null) {
-        if (typeof gtag === 'function') {
-            gtag('event', 'click', {
-                'event_category': category,
-                'event_label': label,
-                'value': value,
-            });
-        }
-    };
-});
+    function trackClick(label, category = 'CTA', value = null) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'click', {
+          'event_category': category,
+          'event_label': label,
+          'value': value
+        });
+      } else {
+        console.log("gtag non disponible, trackClick:", label, category, value);
+      }
+    }
+
+    // Attacher le gestionnaire d'événement pour le bouton "Ajouter à vos favoris"
+    const favoriteButton = document.getElementById("favorite-button");
+    if (favoriteButton) {
+      favoriteButton.addEventListener("click", function() {
+        addToFavorites();
+        trackClick('Ajout Favoris', 'Interaction', 0);
+      });
+    }
+  });
 </script>
   
 <script nonce="48273">
