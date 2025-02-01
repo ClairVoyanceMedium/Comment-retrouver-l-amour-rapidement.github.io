@@ -625,7 +625,7 @@
     <!-- Titre Principal EN BLANC -->
     <h1 aria-label="Retrouver l'amour grâce à la puissance des rituels à distance">Retrouver l'amour grâce à la puissance des rituels à distance</h1>
 
-    <!-- Bouton Favoris -->
+    <!-- Premier Bouton Favoris -->
     <div style="text-align: center; margin-top: 20px;">
       <button id="favorite-button"
               style="background: none; border: none; cursor: pointer;"
@@ -834,7 +834,7 @@
         assurant discrétion et bienveillance à chaque étape.
       </p>
     </section>
-    <!-- Bouton Favoris -->
+    <!-- Deuxième Bouton Favoris -->
     <div style="text-align: center; margin-top: 20px;">
       <button id="favorite-button"
               style="background: none; border: none; cursor: pointer;"
@@ -978,85 +978,79 @@
     </a>
   </footer>
 
-  <script nonce="48273">
-    // Mise à jour de l'année courante
-    document.addEventListener("DOMContentLoaded", function() {
-        // Sélectionner tous les éléments avec l'ID current-year
-        var yearElements = document.querySelectorAll("#current-year");
-        
-        // Mettre à jour chaque élément
-        yearElements.forEach(function(yearElement) {
-            yearElement.textContent = new Date().getFullYear();
-        });
-
-    // Vérification et ajout des étoiles dynamiques
-    const starsContainer = document.querySelector('.stars');
-    if (starsContainer) {
-        const starCount = 30;
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.classList.add('star');
-            star.style.top = Math.random() * 100 + '%';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 2 + 's';
-            starsContainer.appendChild(star);
-        }
-    }
-
-    // Ajout des étoiles filantes
-    const shootingStarsContainer = document.getElementById('shooting-stars-container');
-    if (shootingStarsContainer) {
-        const shootingStarCount = 5;
-        for (let i = 0; i < shootingStarCount; i++) {
-            const shootingStar = document.createElement('div');
-            shootingStar.classList.add('shooting-star');
-            shootingStar.style.top = Math.random() * 100 + '%';
-            shootingStar.style.left = Math.random() * 100 + '%';
-            shootingStar.style.animationDuration = (Math.random() * 5 + 5) + 's';
-            shootingStarsContainer.appendChild(shootingStar);
-        }
-    }
-
-    // Fonction ajout aux favoris
-    window.addToFavorites = function() {
-        const text = document.getElementById("favorite-text");
-        const button = document.getElementById("favorite-button");
-
-        text.innerHTML = "⭐ Ajouté à vos favoris !";
-        text.style.color = "#FFD700";
-        button.setAttribute("aria-pressed", "true");
-
-        if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-            alert("Appuyez sur le bouton de partage (en bas), puis sur 'Ajouter à l'écran d'accueil'.");
-        } else if (navigator.userAgent.match(/Android/i)) {
-            alert("Appuyez sur le menu (⋮) en haut à droite, puis sur 'Ajouter à l'écran d'accueil'.");
-        } else {
-            alert("Appuyez sur Ctrl + D (ou Command + D sur Mac) pour ajouter ce site à vos favoris.");
-        }
-    };
-
-    // Fonction de suivi des clics
-    function trackClick(label, category = 'CTA', value = null) {
-      if (typeof gtag === 'function') {
-        gtag('event', 'click', {
-          'event_category': category,
-          'event_label': label,
-          'value': value
-        });
-      } else {
-        console.log("gtag non disponible, trackClick:", label, category, value);
-      }
-    }
-
-    // Attacher le gestionnaire d'événement pour le bouton "Ajouter à vos favoris"
-    const favoriteButton = document.getElementById("favorite-button");
-    if (favoriteButton) {
-      favoriteButton.addEventListener("click", function() {
-        addToFavorites();
-        trackClick('Ajout Favoris', 'Interaction', 0);
-      });
-    }
+ <script nonce="48273">
+document.addEventListener("DOMContentLoaded", function() {
+  // Mise à jour de l'année courante
+  document.querySelectorAll("#current-year").forEach(function(el) {
+    el.textContent = new Date().getFullYear();
   });
+
+  // Ajout des étoiles dynamiques
+  const starsContainer = document.querySelector('.stars');
+  if (starsContainer) {
+    const starCount = 30;
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 2 + 's';
+      starsContainer.appendChild(star);
+    }
+  }
+
+  // Ajout des étoiles filantes
+  const shootingStarsContainer = document.getElementById('shooting-stars-container');
+  if (shootingStarsContainer) {
+    const shootingStarCount = 5;
+    for (let i = 0; i < shootingStarCount; i++) {
+      const shootingStar = document.createElement('div');
+      shootingStar.classList.add('shooting-star');
+      shootingStar.style.top = Math.random() * 100 + '%';
+      shootingStar.style.left = Math.random() * 100 + '%';
+      shootingStar.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      shootingStarsContainer.appendChild(shootingStar);
+    }
+  }
+
+  // Fonction d'ajout aux favoris qui agit sur le bouton cliqué
+  function addToFavorites(button) {
+    const text = button.querySelector('.favorite-text');
+    text.innerHTML = "⭐ Ajouté à vos favoris !";
+    text.style.color = "#FFD700";
+    button.setAttribute("aria-pressed", "true");
+
+    if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+      alert("Appuyez sur le bouton de partage (en bas), puis sur 'Ajouter à l'écran d'accueil'.");
+    } else if (navigator.userAgent.match(/Android/i)) {
+      alert("Appuyez sur le menu (⋮) en haut à droite, puis sur 'Ajouter à l'écran d'accueil'.");
+    } else {
+      alert("Appuyez sur Ctrl + D (ou Command + D sur Mac) pour ajouter ce site à vos favoris.");
+    }
+  }
+
+  // Fonction de suivi des clics Google Analytics
+  function trackClick(label, category = 'CTA', value = null) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'click', {
+        'event_category': category,
+        'event_label': label,
+        'value': value
+      });
+    } else {
+      console.log("gtag non disponible, trackClick:", label, category, value);
+    }
+  }
+
+  // Attacher le gestionnaire d'événement pour tous les boutons "Ajouter à vos favoris"
+  const favoriteButtons = document.querySelectorAll(".favorite-button");
+  favoriteButtons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      addToFavorites(button);
+      trackClick('Ajout Favoris', 'Interaction', 0);
+    });
+  });
+});
 </script>
   
 </body>
