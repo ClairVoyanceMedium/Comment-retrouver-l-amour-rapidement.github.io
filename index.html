@@ -450,18 +450,25 @@
 
   <!-- Politique de sécurité de contenu (CSP) -->
    <meta http-equiv="Content-Security-Policy" content="
-    default-src 'self';
-    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com 'unsafe-inline';
-    style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
-    font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' https://i.imgur.com https://www.googleadservices.com data:;
-    connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;
-    frame-src 'self' https://js.stripe.com https://www.googletagmanager.com;
-    object-src 'none';
-    base-uri 'self';
-    form-action 'self';
-    frame-ancestors 'self';
-    upgrade-insecure-requests;">
+  default-src 'self';
+  /* On limite les scripts aux sources de confiance et on autorise temporairement les scripts inline */
+  script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com;
+  /* Les styles proviennent de notre domaine et de Google Fonts – unsafe-inline est parfois nécessaire pour les styles dynamiques */
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  /* Les polices uniquement depuis Google Fonts */
+  font-src 'self' https://fonts.gstatic.com;
+  /* Les images uniquement depuis notre domaine, imgur et les sources de Google AdServices, et on autorise les data: */
+  img-src 'self' https://i.imgur.com https://www.googleadservices.com data:;
+  /* Limiter les connexions aux domaines de tracking et analytiques */
+  connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://region2.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net;
+  /* Autoriser les frames pour Stripe et Google Tag Manager */
+  frame-src 'self' https://js.stripe.com https://www.googletagmanager.com;
+  object-src 'none';
+  base-uri 'self';
+  form-action 'self';
+  frame-ancestors 'self';
+  upgrade-insecure-requests">
+
 </head>
 <body>
   <!-- Balise Google Ads Universelle avec Remarketing et Suivi des Conversions -->
