@@ -1102,33 +1102,6 @@ document.addEventListener("DOMContentLoaded", function() {
     el.textContent = new Date().getFullYear();
   });
 
-  // Ajout des étoiles dynamiques (si nécessaire)
-  const starsContainer = document.querySelector('.stars');
-  if (starsContainer) {
-    const starCount = 30;
-    for (let i = 0; i < starCount; i++) {
-      const star = document.createElement('div');
-      star.classList.add('star');
-      star.style.top = Math.random() * 100 + '%';
-      star.style.left = Math.random() * 100 + '%';
-      star.style.animationDelay = Math.random() * 2 + 's';
-      starsContainer.appendChild(star);
-    }
-  }
-
-  // Ajout des étoiles filantes (si nécessaire)
-  const shootingStarsContainer = document.getElementById('shooting-stars-container');
-  if (shootingStarsContainer) {
-    const shootingStarCount = 5;
-    for (let i = 0; i < shootingStarCount; i++) {
-      const shootingStar = document.createElement('div');
-      shootingStar.classList.add('shooting-star');
-      shootingStar.style.top = Math.random() * 100 + '%';
-      shootingStar.style.left = Math.random() * 100 + '%';
-      shootingStar.style.animationDuration = (Math.random() * 5 + 5) + 's';
-      shootingStarsContainer.appendChild(shootingStar);
-    }
-  }
 
   // Fonction d'ajout aux favoris qui agit sur le bouton cliqué
   function addToFavorites(button) {
