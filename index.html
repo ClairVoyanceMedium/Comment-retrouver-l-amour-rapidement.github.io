@@ -1167,102 +1167,134 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
   
-<!-- ChatBot Script JavaScript amélioré -->
+<!-- ChatBot Script JavaScript -->
 <script>
-    document.addEventListener("DOMContentLoaded", () => loadHistory());
+document.addEventListener("DOMContentLoaded", () => {
+    loadHistory();
+    setupChat();
+});
 
-    function toggleChat() {
-        let chat = document.getElementById("chatbot");
-        chat.style.display = chat.style.display === "none" ? "flex" : "none";
-    }
-  
-    function sendMsg(text = null) {
-        let input = text || document.getElementById("chat-input").value.toLowerCase().trim();
-        if (!input) return;
+// Fonction pour basculer l'affichage du chatbot
+function toggleChat() {
+    let chat = document.getElementById("chatbot");
+    chat.style.display = chat.style.display === "none" ? "flex" : "none";
+}
 
-        let chat = document.getElementById("chat-body");
-        chat.innerHTML += `<p class='user'>👤 ${input}</p>`;
-
-        document.getElementById("chat-input").value = "";
-
-        let typing = document.createElement("p");
-        typing.classList.add("bot", "typing");
-        typing.innerHTML = `<img src="https://i.imgur.com/GmyGlKk.webp" alt="Avatar"> 🔮 Je réfléchis...`;
-        chat.appendChild(typing);
-        chat.scrollTop = chat.scrollHeight;
-
-        setTimeout(() => {
-            typing.remove();
-            let response = getHumanLikeResponse(input);
-            chat.innerHTML += `<p class='bot'><img src="https://i.imgur.com/GmyGlKk.webp" alt="Avatar"> ${response}</p>`;
-            chat.scrollTop = chat.scrollHeight;
-            speak(response);
-            saveHistory();
-            showQuickReplies(input);
-        }, 1500);
-    }
-
-    function handleKey(event) {
+// Fonction d'initialisation
+function setupChat() {
+    document.getElementById("chat-input").addEventListener("keypress", function(event) {
         if (event.key === "Enter") sendMsg();
+    });
+}
+
+// Fonction d'envoi de message
+function sendMsg(text = null) {
+    let input = text || document.getElementById("chat-input").value.toLowerCase().trim();
+    if (!input) return;
+
+    let chat = document.getElementById("chat-body");
+    chat.innerHTML += `<p class='user'>👤 ${input}</p>`;
+    document.getElementById("chat-input").value = "";
+
+    let typing = document.createElement("p");
+    typing.classList.add("bot", "typing");
+    typing.innerHTML = `<img src="https://i.imgur.com/GmyGlKk.webp" alt="Avatar"> 🔮 Je réfléchis...`;
+    chat.appendChild(typing);
+    chat.scrollTop = chat.scrollHeight;
+
+    setTimeout(() => {
+        typing.remove();
+        let response = getSmartResponse(input);
+        chat.innerHTML += `<p class='bot'><img src="https://i.imgur.com/GmyGlKk.webp" alt="Avatar"> ${response}</p>`;
+        chat.scrollTop = chat.scrollHeight;
+        speak(response);
+        saveHistory();
+        showQuickReplies(input);
+    }, 1500);
+}
+
+// Fonction pour répondre intelligemment aux questions avec plus de détails
+function getSmartResponse(msg) {
+    let responses = {
+        "bonjour": "Bonjour et bienvenue ! 😊 Comment puis-je vous aider aujourd’hui ?",
+        "voyance": "Je propose des consultations de voyance par téléphone et par e-mail. 📞 Vous pouvez me joindre au 06 95 46 89 23. Vous souhaitez en savoir plus sur les tarifs ou le déroulement d’une séance ?",
+        "tarif": "Voici les tarifs de voyance :\n - 10 minutes : 15€\n - 20 minutes : 22€\n - 30 minutes : 30€\n - 45 minutes : 38€\n\n Voulez-vous prendre rendez-vous ?",
+        "contact": "📩 Vous pouvez me contacter à cette adresse e-mail : contact.clairvoyancemedium@gmail.com. Besoin d’un conseil particulier ?",
+        "rituel": "Les rituels sentimentaux permettent de rétablir des liens, d'attirer l’amour ou de renforcer une relation existante. 💕 Quel type de rituel vous intéresse : retour affectif, protection du couple ou attraction amoureuse ?",
+        "protection": "Pour éloigner les énergies négatives, nous proposons des rituels de purification et de protection contre la malchance et les influences toxiques. 🌿 Aimeriez-vous un rituel spécifique ?",
+        "compatibilité": "L’étude de compatibilité amoureuse permet de comprendre les forces et faiblesses d’un couple. 🔮 Basée sur vos signes astrologiques et vos énergies, elle révèle le potentiel de votre relation. Voulez-vous analyser votre compatibilité avec quelqu’un ?",
+        "merci": "Avec plaisir ! 😊 Si vous avez d'autres questions, n'hésitez pas.",
+        "bye": "À bientôt ! 🌟 Prenez soin de vous.",
+        "paiement": "Le paiement s’effectue en toute sécurité via Stripe ou PayPal. 💳 Vous souhaitez un lien direct pour finaliser votre commande ?",
+        "horaires": "Les consultations de voyance sont disponibles de 9h à 22h, 7j/7. ⏳ Un créneau particulier vous conviendrait-il ?",
+        "avis": "Nos clients sont très satisfaits de nos services. ⭐⭐⭐⭐⭐ Vous pouvez consulter les avis sur notre site. Voulez-vous un témoignage ?"
+    };
+
+    for (let key in responses) {
+        if (msg.includes(key)) return responses[key];
     }
 
-    function getHumanLikeResponse(msg) {
-        let responses = {
-            "bonjour": "Coucou ! 😊 Comment puis-je t’aider aujourd’hui ?",
-            "voyance": "Je propose des consultations de voyance 📞 au 06 95 46 89 23. Tu veux en savoir plus ?",
-            "tarif": "Les tarifs : 10 min - 15€, 20 min - 22€, 30 min - 30€, 45 min - 38€.",
-            "contact": "📩 contact.clairvoyancemedium@gmail.com",
-            "rituel": "Les rituels de retour affectif sont puissants 💕. Quel rituel t’intéresse ?",
-            "protection": "Je peux t’aider à éloigner les mauvaises énergies ✨. Tu veux un rituel spécifique ?",
-            "compatibilité": "L’analyse astrologique révèle beaucoup sur ton couple 🔮. Veux-tu en savoir plus ?",
-            "merci": "Avec plaisir ! 😊",
-            "bye": "À bientôt ! 🌟"
-        };
+    return "Je ne suis pas sûr de comprendre 🤔. Pouvez-vous reformuler votre question ?";
+}
 
-        for (let key in responses) {
-            if (msg.includes(key)) return responses[key];
-        }
+// Fonction pour la synthèse vocale des réponses
+function speak(text) {
+    let speech = new SpeechSynthesisUtterance();
+    speech.text = text;
+    speech.lang = "fr-FR";
+    speech.rate = 1;
+    window.speechSynthesis.speak(speech);
+}
 
-        return "Je ne suis pas sûr de comprendre 🤔. Tu peux reformuler ?";
-    }
+// Sauvegarde et chargement de l'historique du chat
+function saveHistory() {
+    localStorage.setItem("chatHistory", document.getElementById("chat-body").innerHTML);
+}
 
-    function speak(text) {
-        let speech = new SpeechSynthesisUtterance();
-        speech.text = text;
-        speech.lang = "fr-FR";
-        speech.rate = 1;
-        window.speechSynthesis.speak(speech);
-    }
+function loadHistory() {
+    let chatHistory = localStorage.getItem("chatHistory");
+    if (chatHistory) document.getElementById("chat-body").innerHTML = chatHistory;
+}
 
-    function saveHistory() {
-        localStorage.setItem("chatHistory", document.getElementById("chat-body").innerHTML);
-    }
+// Fonction pour afficher des réponses rapides contextuelles
+function showQuickReplies(topic) {
+    let replies = {
+        "voyance": ["Quels sont les horaires ?", "Comment ça fonctionne ?", "Quels sont les tarifs ?"],
+        "rituel": ["Quels rituels existent ?", "Combien ça coûte ?", "Comment fonctionne un rituel ?"],
+        "compatibilité": ["Comment ça marche ?", "Quels sont les signes les plus compatibles ?", "Peut-on améliorer une relation ?"],
+        "paiement": ["Quels sont les moyens de paiement ?", "Puis-je payer en plusieurs fois ?"]
+    };
 
-    function loadHistory() {
-        let chatHistory = localStorage.getItem("chatHistory");
-        if (chatHistory) document.getElementById("chat-body").innerHTML = chatHistory;
-    }
+    let quickReplyContainer = document.getElementById("quick-replies");
+    quickReplyContainer.innerHTML = "";
 
-    function showQuickReplies(topic) {
-        let replies = {
-            "voyance": ["Quels sont les horaires ?", "Comment ça fonctionne ?"],
-            "rituel": ["Quels rituels existent ?", "Combien ça coûte ?"],
-            "compatibilité": ["Comment ça marche ?", "Quels sont les signes les plus compatibles ?"]
-        };
-
-        let quickReplyContainer = document.getElementById("quick-replies");
-        quickReplyContainer.innerHTML = "";
-
-        if (replies[topic]) {
-            replies[topic].forEach(text => {
+    for (let key in replies) {
+        if (topic.includes(key)) {
+            replies[key].forEach(text => {
                 let btn = document.createElement("button");
                 btn.classList.add("quick-reply");
                 btn.innerText = text;
                 btn.onclick = () => sendMsg(text);
                 quickReplyContainer.appendChild(btn);
             });
+            break;
         }
     }
+}
+
+// Fonction pour détecter si l'utilisateur est inactif et lui envoyer un message
+let inactivityTimer;
+document.addEventListener("mousemove", resetInactivityTimer);
+document.addEventListener("keydown", resetInactivityTimer);
+
+function resetInactivityTimer() {
+    clearTimeout(inactivityTimer);
+    inactivityTimer = setTimeout(() => {
+        let chat = document.getElementById("chat-body");
+        chat.innerHTML += `<p class='bot'><img src="https://i.imgur.com/GmyGlKk.webp" alt="Avatar"> 🔮 Besoin d’aide ? N’hésitez pas à me poser une question !</p>`;
+        chat.scrollTop = chat.scrollHeight;
+    }, 30000); // Message après 30 secondes d'inactivité
+}
 </script>
 
   
