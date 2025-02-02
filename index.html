@@ -40,7 +40,19 @@
 
   <link rel="canonical" href="https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/">
   <link rel="icon" href="favicon_optimized.png" type="image/png" sizes="16x16 32x32 48x48 64x64 128x128" crossorigin="anonymous">
+  <!-- Favicon standard -->
+  <link rel="icon" type="image/png" href="favicon_optimized.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="favicon_optimized.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="favicon_optimized.png" sizes="48x48">
+  <link rel="icon" type="image/png" href="favicon_optimized.png" sizes="64x64">
+  <link rel="icon" type="image/png" href="favicon_optimized.png" sizes="128x128">
+
+  <!-- Favicon Apple -->
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon_optimized.png">
+
+  <!-- Favicon pour PWA (Progressive Web App) -->
   <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
 
 
   <!-- Préconnexion et préchargement des ressources critiques -->
@@ -103,21 +115,7 @@
   .thank-you{font-size:2.5rem;font-family:'Ephesis',cursive;color:#ffb6c1;text-shadow:3px 3px 6px rgba(255,182,193,0.6);display:block;margin-top:0.5rem;transform:rotate(-2deg);}
   .favorite-button { background: none; border: none; outline: none; }
   .content-container { text-align: left; max-width: 800px; margin: 0 auto; } .content-container ul, .content-container ol { padding-left: 20px; } .content-container li { margin-bottom: 8px; } .cta-container { text-align: left; margin-top: 20px; } .cta-button { display: inline-block; padding: 10px 20px; font-size: 1.2rem; color: #fff; background: linear-gradient(145deg, #FFB6C1, #FF69B4); text-decoration: none; border: none; border-radius: 5px; transition: all 0.3s ease; cursor: pointer; } .cta-button:hover { opacity: 0.9; }</style>
-  #chat-container { width: 100%; max-width: 400px; position: fixed; bottom: 20px; right: 20px; background: #1e1e1e; border: 2px solid #ff69b4; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); overflow: hidden; color: #fff; font-family: 'Arial', sans-serif; }
-  #chat-header { background: #ff69b4; color: white; text-align: center; padding: 10px; font-weight: bold; font-size: 18px; }
-  #chat-box { height: 350px; overflow-y: auto; padding: 10px; font-size: 14px; display: flex; flex-direction: column; }
-  .user-message { background: #FFB6C1; padding: 8px; border-radius: 10px; margin: 5px 0; text-align: right; align-self: flex-end; max-width: 70%; animation: fadeIn 0.5s ease-in-out; }
-  .bot-message { background: #87CEEB; padding: 8px; border-radius: 10px; margin: 5px 0; text-align: left; align-self: flex-start; max-width: 70%; animation: fadeIn 0.5s ease-in-out; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  #chat-form { display: flex; padding: 10px; background: #333; border-top: 2px solid #ff69b4; }
-  #chat-input { flex: 1; padding: 10px; border: none; border-radius: 5px; background: #444; color: white; }
-  button { background: #ff69b4; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px; transition: background 0.3s ease-in-out; }
-  button:hover { background: #ff1493; }
-  .user-message, .bot-message {
-    min-width: 50%;
-    max-width: 70%;
-}
-
+  
   </style>
 
     <!-- Balises JSON-LD pour SEO -->
@@ -1088,15 +1086,6 @@ Modifier
     </a>
   </footer>
 
-<div id="chat-container">
-        <div id="chat-header">💬 Chat en direct</div>
-        <div id="chat-box"></div>
-        <form id="chat-form">
-            <input type="text" id="chat-input" placeholder="Posez votre question..." required>
-            <button type="submit">Envoyer</button>
-        </form>
-    </div>
-  
   <script nonce="48273">
 document.addEventListener("DOMContentLoaded", function() {
   // Mise à jour de l'année courante
@@ -1144,43 +1133,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-  
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const chatForm = document.getElementById("chat-form");
-        const chatInput = document.getElementById("chat-input");
-        const chatBox = document.getElementById("chat-box");
-
-        const chatbot = {
-            "bonjour": "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
-            "comment retrouver son ex ?": "Les rituels de magie rouge peuvent être une solution.",
-            "comment fonctionne la voyance par email ?": "Posez votre question et recevez une réponse en quelques heures.",
-        };
-
-        chatForm.addEventListener("submit", function(event) {
-            event.preventDefault();
-            const userMessage = chatInput.value.trim();
-            if (userMessage === "") return;
-
-            appendMessage("user", userMessage);
-            setTimeout(() => {
-                const botResponse = chatbot[userMessage.toLowerCase()] || "Je ne comprends pas. Pouvez-vous préciser ?";
-                appendMessage("bot", botResponse);
-            }, 500);
-
-            chatInput.value = "";
-            chatBox.scrollTop = chatBox.scrollHeight;
-        });
-
-        function appendMessage(sender, message) {
-            const messageDiv = document.createElement("div");
-            messageDiv.classList.add(sender === "user" ? "user-message" : "bot-message");
-            messageDiv.textContent = message;
-            chatBox.appendChild(messageDiv);
-        }
-    });
-</script>
-
   
 </body>
 </html>
