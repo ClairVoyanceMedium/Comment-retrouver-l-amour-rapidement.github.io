@@ -108,9 +108,74 @@
   .number-one{font-size:1.8rem;font-weight:bold;color: #BBD2E1;text-shadow:2px 2px 5px rgba(255,215,0,0.7);display:block;font-family:'Cinzel',serif;} 
   .thank-you{font-size:2.5rem;font-family:'Ephesis',cursive;color:#ffb6c1;text-shadow:3px 3px 6px rgba(255,182,193,0.6);display:block;margin-top:0.5rem;transform:rotate(-2deg);}
   .favorite-button { background: none; border: none; outline: none; }
+
     
+  :root {
+    --bg-light: #fff; --text-light: #222; --bot-light: #ff69b4; --user-light: #87CEEB;
+    --bg-dark: #111; --text-dark: #fff; --bot-dark: #ff69b4; --user-dark: #87CEEB;
+}
+
+body { font-family: Arial, sans-serif; }
+
+@media (prefers-color-scheme: dark) { 
+    :root { --bg: var(--bg-dark); --text: var(--text-dark); --bot: var(--bot-dark); --user: var(--user-dark); }
+}
+
+@media (prefers-color-scheme: light) { 
+    :root { --bg: var(--bg-light); --text: var(--text-light); --bot: var(--bot-light); --user: var(--user-light); }
+}
+
+#chat-toggle {
+    position: fixed; bottom: 20px; right: 20px; background: var(--bot);
+    color: #fff; border: none; padding: 10px; font-size: 1.5rem;
+    border-radius: 50%; cursor: pointer; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+#chatbot {
+    position: fixed; bottom: 80px; right: 20px; width: 320px;
+    background: var(--bg); border-radius: 10px; color: var(--text);
+    padding: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    display: none; flex-direction: column;
+}
+
+#chat-header {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bot); padding: 10px; border-radius: 10px 10px 0 0;
+}
+
+#chat-header img { width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; }
+
+#chat-header button, button {
+    background: var(--bot); border: none; font-size: 1.2rem; color: #fff;
+    cursor: pointer; padding: 5px; border-radius: 5px;
+}
+
+#chat-body {
+    height: 250px; overflow-y: auto; padding: 10px; border-bottom: 1px solid #444;
+}
+
+#chat-input {
+    width: 75%; padding: 5px; border: none; background: #222; color: var(--text);
+}
+
+.user, .bot { margin-bottom: 10px; }
+.user { text-align: right; color: var(--user); }
+.bot { text-align: left; color: var(--bot); display: flex; align-items: center; }
+.bot img { width: 25px; height: 25px; border-radius: 50%; margin-right: 5px; }
+.typing { font-style: italic; color: #ccc; }
+
+#quick-replies {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 5px;
+    margin: 10px 0; padding: 5px;
+}
+
+.quick-reply {
+    background: var(--bot); color: #fff; padding: 5px 10px;
+    border-radius: 5px; border: none; cursor: pointer;
+}
   </style>
 
+  
     <!-- Balises JSON-LD pour SEO -->
     <script type="application/ld+json">
 {
@@ -1007,6 +1072,25 @@
     </a>
   </footer>
 
+
+<!-- ChatBot Bouton flottant pour ouvrir/fermer le chatbot -->
+<button id="chat-toggle">💬</button>
+
+<!-- ChatBot Fenêtre du chatbot -->
+<div id="chatbot">
+    <div id="chat-header">
+        <img src="https://i.imgur.com/GmyGlKk.webp" alt="Logo ClairvoyanceMedium" class="avatar">
+        <span>🔮 Voyance AI</span>
+        <button onclick="toggleChat()">✖</button>
+    </div>
+    <div id="chat-body"></div>
+    <div id="quick-replies"></div>
+    <input type="text" id="chat-input" placeholder="Posez-moi une question..." onkeypress="handleKey(event)">
+    <button onclick="sendMsg()">Envoyer</button>
+</div>
+
+
+  
   <script nonce="48273">
 document.addEventListener("DOMContentLoaded", function() {
   // Mise à jour de l'année courante
@@ -1081,6 +1165,106 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+
+  
+<!-- ChatBot Script JavaScript amélioré -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => loadHistory());
+
+    function toggleChat() {
+        let chat = document.getElementById("chatbot");
+        chat.style.display = chat.style.display === "none" ? "flex" : "none";
+    }
+
+    function sendMsg(text = null) {
+        let input = text || document.getElementById("chat-input").value.toLowerCase().trim();
+        if (!input) return;
+
+        let chat = document.getElementById("chat-body");
+        chat.innerHTML += `<p class='user'>👤 ${input}</p>`;
+
+        document.getElementById("chat-input").value = "";
+
+        let typing = document.createElement("p");
+        typing.classList.add("bot", "typing");
+        typing.innerHTML = `<img src="https://i.imgur.com/GmyGlKk.webp" alt="Avatar"> 🔮 Je réfléchis...`;
+        chat.appendChild(typing);
+        chat.scrollTop = chat.scrollHeight;
+
+        setTimeout(() => {
+            typing.remove();
+            let response = getHumanLikeResponse(input);
+            chat.innerHTML += `<p class='bot'><img src="https://i.imgur.com/GmyGlKk.webp" alt="Avatar"> ${response}</p>`;
+            chat.scrollTop = chat.scrollHeight;
+            speak(response);
+            saveHistory();
+            showQuickReplies(input);
+        }, 1500);
+    }
+
+    function handleKey(event) {
+        if (event.key === "Enter") sendMsg();
+    }
+
+    function getHumanLikeResponse(msg) {
+        let responses = {
+            "bonjour": "Coucou ! 😊 Comment puis-je t’aider aujourd’hui ?",
+            "voyance": "Je propose des consultations de voyance 📞 au 06 95 46 89 23. Tu veux en savoir plus ?",
+            "tarif": "Les tarifs : 10 min - 15€, 20 min - 22€, 30 min - 30€, 45 min - 38€.",
+            "contact": "📩 contact.clairvoyancemedium@gmail.com",
+            "rituel": "Les rituels de retour affectif sont puissants 💕. Quel rituel t’intéresse ?",
+            "protection": "Je peux t’aider à éloigner les mauvaises énergies ✨. Tu veux un rituel spécifique ?",
+            "compatibilité": "L’analyse astrologique révèle beaucoup sur ton couple 🔮. Veux-tu en savoir plus ?",
+            "merci": "Avec plaisir ! 😊",
+            "bye": "À bientôt ! 🌟"
+        };
+
+        for (let key in responses) {
+            if (msg.includes(key)) return responses[key];
+        }
+
+        return "Je ne suis pas sûr de comprendre 🤔. Tu peux reformuler ?";
+    }
+
+    function speak(text) {
+        let speech = new SpeechSynthesisUtterance();
+        speech.text = text;
+        speech.lang = "fr-FR";
+        speech.rate = 1;
+        window.speechSynthesis.speak(speech);
+    }
+
+    function saveHistory() {
+        localStorage.setItem("chatHistory", document.getElementById("chat-body").innerHTML);
+    }
+
+    function loadHistory() {
+        let chatHistory = localStorage.getItem("chatHistory");
+        if (chatHistory) document.getElementById("chat-body").innerHTML = chatHistory;
+    }
+
+    function showQuickReplies(topic) {
+        let replies = {
+            "voyance": ["Quels sont les horaires ?", "Comment ça fonctionne ?"],
+            "rituel": ["Quels rituels existent ?", "Combien ça coûte ?"],
+            "compatibilité": ["Comment ça marche ?", "Quels sont les signes les plus compatibles ?"]
+        };
+
+        let quickReplyContainer = document.getElementById("quick-replies");
+        quickReplyContainer.innerHTML = "";
+
+        if (replies[topic]) {
+            replies[topic].forEach(text => {
+                let btn = document.createElement("button");
+                btn.classList.add("quick-reply");
+                btn.innerText = text;
+                btn.onclick = () => sendMsg(text);
+                quickReplyContainer.appendChild(btn);
+            });
+        }
+    }
+</script>
+
   
 </body>
 </html>
