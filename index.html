@@ -1180,47 +1180,45 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM chargé, initialisation du chatbot...");
 
-    // Vérifier si le bouton de chat est bien présent
     let chatToggle = document.getElementById("chat-toggle");
-    if (!chatToggle) {
-        console.error("Erreur : Bouton #chat-toggle introuvable !");
+    let chat = document.getElementById("chatbot");
+
+    if (!chatToggle || !chat) {
+        console.error("Erreur : Bouton ou chatbot introuvable !");
         return;
     }
 
-    // Affichage du chatbot (vérification du display)
-    let chat = document.getElementById("chatbot");
-    chat.style.display = "none"; // Masquer par défaut pour éviter un bug d'affichage
-
-    // Activation du bouton de chat
-    chatToggle.style.display = "block"; // Forcer l'affichage
+    chat.style.display = "none";
+    chatToggle.style.display = "block";
     chatToggle.style.opacity = "1";
-    chatToggle.addEventListener("click", toggleChat);
 
-    // Charger l'historique du chat si disponible
+    chatToggle.addEventListener("click", function () {
+        if (chat.style.display === "none" || chat.style.display === "") {
+            chat.style.display = "flex";
+            setTimeout(() => chat.style.opacity = "1", 10);
+        } else {
+            chat.style.opacity = "0";
+            setTimeout(() => chat.style.display = "none", 300);
+        }
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!chat.contains(event.target) && event.target !== chatToggle) {
+            chat.style.opacity = "0";
+            setTimeout(() => chat.style.display = "none", 300);
+        }
+    });
+
     loadHistory();
     setupChat();
 });
 
-// Fonction pour ouvrir/fermer le chatbot avec animation fluide
-function toggleChat() {
-    let chat = document.getElementById("chatbot");
-    if (chat.style.display === "none" || chat.style.display === "") {
-        chat.style.display = "flex";
-        setTimeout(() => (chat.style.opacity = "1"), 10);
-    } else {
-        chat.style.opacity = "0";
-        setTimeout(() => (chat.style.display = "none"), 300);
-    }
-}
-
-// Fonction pour configurer le chatbot
 function setupChat() {
     document.getElementById("chat-input").addEventListener("keypress", function (event) {
         if (event.key === "Enter") sendMsg();
     });
 }
 
-// Fonction pour envoyer un message et recevoir une réponse
 function sendMsg(text = null) {
     let input = text || document.getElementById("chat-input").value.toLowerCase().trim();
     if (!input) return;
@@ -1246,19 +1244,16 @@ function sendMsg(text = null) {
     }, 1500);
 }
 
-// Réponses intelligentes
 function getSmartResponse(msg) {
     let responses = {
         "bonjour": "Bonjour et bienvenue ! 😊 Comment puis-je vous aider aujourd’hui ?",
-        "voyance": "Je propose des consultations de voyance 📞 au 06 95 46 89 23. Voulez-vous connaître les tarifs ou le déroulement d’une séance ?",
-        "tarif": "Les tarifs de voyance sont :\n10 min - 15€\n20 min - 22€\n30 min - 30€\n45 min - 38€. Voulez-vous réserver une consultation ?",
-        "contact": "📩 Vous pouvez me contacter à contact.clairvoyancemedium@gmail.com. Avez-vous une question spécifique ?",
-        "rituel": "Les rituels sentimentaux permettent d’attirer l’amour, protéger un couple ou retrouver un être cher. 💕 Quel type de rituel vous intéresse ?",
-        "protection": "Nous proposons des rituels de protection contre les énergies négatives. 🌿 Souhaitez-vous un rituel spécifique ?",
-        "compatibilité": "L’analyse de compatibilité amoureuse évalue les forces et faiblesses d’un couple grâce à l’astrologie. 🔮 Voulez-vous une analyse personnalisée ?",
-        "paiement": "Le paiement s’effectue en toute sécurité via Stripe ou PayPal. 💳 Souhaitez-vous un lien pour finaliser votre commande ?",
-        "horaires": "Les consultations sont disponibles de 9h à 22h, 7j/7. ⏳ Un créneau particulier vous conviendrait-il ?",
-        "avis": "Nos clients sont très satisfaits ⭐⭐⭐⭐⭐ Vous souhaitez lire des témoignages ?",
+        "voyance": "Je propose des consultations de voyance 📞 au 06 95 46 89 23. Voulez-vous connaître les tarifs ?",
+        "tarif": "Les tarifs sont :\n10 min - 15€\n20 min - 22€\n30 min - 30€\n45 min - 38€. Voulez-vous réserver ?",
+        "contact": "📩 Vous pouvez me contacter à contact.clairvoyancemedium@gmail.com. Besoin d'une question spécifique ?",
+        "rituel": "Les rituels sentimentaux permettent d’attirer l’amour, protéger un couple. 💕 Quel type vous intéresse ?",
+        "paiement": "Le paiement est sécurisé via Stripe ou PayPal. 💳 Souhaitez-vous un lien de paiement ?",
+        "horaires": "Les consultations sont disponibles de 9h à 22h, 7j/7. ⏳ Un créneau particulier ?",
+        "avis": "Nos clients sont très satisfaits ⭐⭐⭐⭐⭐ Vous souhaitez voir des témoignages ?",
         "merci": "Avec plaisir ! 😊 Si vous avez d'autres questions, je suis là.",
         "bye": "À bientôt ! 🌟 Prenez soin de vous."
     };
@@ -1266,11 +1261,9 @@ function getSmartResponse(msg) {
     for (let key in responses) {
         if (msg.includes(key)) return responses[key];
     }
-
     return "Je ne suis pas sûr de comprendre 🤔. Pouvez-vous reformuler votre question ?";
 }
 
-// Fonction de synthèse vocale
 function speak(text) {
     let speech = new SpeechSynthesisUtterance();
     speech.text = text;
@@ -1279,7 +1272,6 @@ function speak(text) {
     window.speechSynthesis.speak(speech);
 }
 
-// Sauvegarde et chargement de l'historique du chat
 function saveHistory() {
     localStorage.setItem("chatHistory", document.getElementById("chat-body").innerHTML);
 }
@@ -1289,12 +1281,11 @@ function loadHistory() {
     if (chatHistory) document.getElementById("chat-body").innerHTML = chatHistory;
 }
 
-// Affichage des réponses rapides
 function showQuickReplies(topic) {
     let replies = {
         "voyance": ["Quels sont les horaires ?", "Comment ça fonctionne ?", "Quels sont les tarifs ?"],
         "rituel": ["Quels rituels existent ?", "Combien ça coûte ?", "Comment fonctionne un rituel ?"],
-        "compatibilité": ["Comment ça marche ?", "Quels sont les signes les plus compatibles ?", "Peut-on améliorer une relation ?"],
+        "compatibilité": ["Comment ça marche ?", "Quels sont les signes les plus compatibles ?"],
         "paiement": ["Quels sont les moyens de paiement ?", "Puis-je payer en plusieurs fois ?"]
     };
 
