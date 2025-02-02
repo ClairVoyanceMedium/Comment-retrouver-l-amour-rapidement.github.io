@@ -1169,12 +1169,14 @@ document.addEventListener("DOMContentLoaded", function() {
   
 <!-- ChatBot Script JavaScript amélioré -->
 document.getElementById("chat-toggle").addEventListener("click", function() {
+    console.log("Bouton cliqué");
     let chat = document.getElementById("chatbot");
     if (chat.style.display === "none" || chat.style.display === "") {
         chat.style.display = "flex";
     } else {
         chat.style.display = "none";
     }
+});
 
     function sendMsg(text = null) {
         let input = text || document.getElementById("chat-input").value.toLowerCase().trim();
