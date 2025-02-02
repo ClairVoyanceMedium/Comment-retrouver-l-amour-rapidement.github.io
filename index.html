@@ -113,6 +113,10 @@
   #chat-input { flex: 1; padding: 10px; border: none; border-radius: 5px; background: #444; color: white; }
   button { background: #ff69b4; color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 5px; transition: background 0.3s ease-in-out; }
   button:hover { background: #ff1493; }
+  .user-message, .bot-message {
+    min-width: 50%;
+    max-width: 70%;
+}
 
   </style>
 
@@ -1140,51 +1144,43 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
+  
 <script>
-        class Chatbot {
-            constructor() {
-                this.responses = {
-                    "bonjour": "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
-                    "comment retrouver son ex ?": "Pour retrouver votre ex, les rituels de magie rouge peuvent être une solution. Frederick du Cabinet ClairvoyanceMedium.com personnalise chaque rituel pour maximiser son efficacité.",
-                    "comment fonctionne la voyance par email ?": "La voyance par email vous permet de poser une ou plusieurs questions à Frederick, qui vous répond avec précision sous 5 à 8 heures.",
-                    "la magie blanche est-elle efficace ?": "Oui, la magie blanche est une pratique douce et harmonieuse, idéale pour renforcer les liens amoureux sans effets négatifs.",
-                    "combien coûte une consultation ?": "Les consultations par email coûtent 6 euros pour une question et 12 euros pour deux questions.",
-                    "comment savoir si mon rituel a fonctionné ?": "Les signes peuvent inclure des changements de comportement de la personne concernée, des rêves récurrents et une sensation d’énergie positive autour de vous.",
-                    "avez-vous des témoignages de clients ?": "Oui, de nombreux clients ont partagé leurs expériences positives avec nos rituels et consultations. Vous pouvez les retrouver sur notre site.",
-                    "proposez-vous des abonnements pour des consultations régulières ?": "Oui, nous avons des formules d’abonnement pour un suivi personnalisé et régulier."
-                };
-            }
-            getResponse(userInput) {
-                const lowerInput = userInput.toLowerCase().trim();
-                return this.responses[lowerInput] || "Je ne suis pas sûr de comprendre votre question. Pouvez-vous la reformuler ou préciser votre demande ?";
-            }
-        }
-        const chatbot = new Chatbot();
-        document.addEventListener("DOMContentLoaded", function() {
-            const chatForm = document.getElementById("chat-form");
-            const chatInput = document.getElementById("chat-input");
-            const chatBox = document.getElementById("chat-box");
-            chatForm.addEventListener("submit", function(event) {
-                event.preventDefault();
-                const userMessage = chatInput.value;
-                if (userMessage.trim() === "") return;
-                appendMessage("user", userMessage);
-                setTimeout(() => {
-                    const botResponse = chatbot.getResponse(userMessage);
-                    appendMessage("bot", botResponse);
-                }, 500);
-                chatInput.value = "";
-                chatBox.scrollTop = chatBox.scrollHeight;
-            });
-            function appendMessage(sender, message) {
-                const messageDiv = document.createElement("div");
-                messageDiv.classList.add(sender === "user" ? "user-message" : "bot-message");
-                messageDiv.textContent = message;
-                chatBox.appendChild(messageDiv);
-            }
+    document.addEventListener("DOMContentLoaded", function() {
+        const chatForm = document.getElementById("chat-form");
+        const chatInput = document.getElementById("chat-input");
+        const chatBox = document.getElementById("chat-box");
+
+        const chatbot = {
+            "bonjour": "Bonjour ! Comment puis-je vous aider aujourd'hui ?",
+            "comment retrouver son ex ?": "Les rituels de magie rouge peuvent être une solution.",
+            "comment fonctionne la voyance par email ?": "Posez votre question et recevez une réponse en quelques heures.",
+        };
+
+        chatForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            const userMessage = chatInput.value.trim();
+            if (userMessage === "") return;
+
+            appendMessage("user", userMessage);
+            setTimeout(() => {
+                const botResponse = chatbot[userMessage.toLowerCase()] || "Je ne comprends pas. Pouvez-vous préciser ?";
+                appendMessage("bot", botResponse);
+            }, 500);
+
+            chatInput.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
         });
-    </script>
+
+        function appendMessage(sender, message) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add(sender === "user" ? "user-message" : "bot-message");
+            messageDiv.textContent = message;
+            chatBox.appendChild(messageDiv);
+        }
+    });
+</script>
+
   
 </body>
 </html>
