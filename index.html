@@ -1093,6 +1093,21 @@ document.addEventListener("DOMContentLoaded", function() {
     el.textContent = new Date().getFullYear();
   });
 
+  <!-- Structure HTML du Chatbot -->
+<div id="chatbot-container">
+  <div id="chatbot-header">
+    <span>Chatbot Clairvoyance</span>
+    <button id="chatbot-close" aria-label="Fermer le chatbot">&times;</button>
+  </div>
+  <div id="chatbot-messages"></div>
+  <div id="chatbot-input-container">
+    <input type="text" id="chatbot-input" placeholder="Votre question...">
+    <button id="chatbot-send">Envoyer</button>
+  </div>
+  <div id="chatbot-suggestions"></div>
+</div>
+<button id="chatbot-toggle" aria-label="Ouvrir le chatbot">Chat</button>
+
 
   // Fonction d'ajout aux favoris qui agit sur le bouton cliqué
   function addToFavorites(button) {
@@ -1132,6 +1147,154 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
+</script>
+
+<!-- Script JavaScript avancé pour le Chatbot (sans API externe) -->
+<script nonce="48273">
+(function(){
+  /***** Base de données FAQ *****/
+  const faqData = [
+    {
+      question: "Comment fonctionne la magie rouge pour retrouver son ex ?",
+      answer: "La magie rouge est un rituel puissant qui utilise des énergies intenses pour récupérer un ex ou attirer une passion ardente. Frederick personnalise chaque rituel pour maximiser son efficacité."
+    },
+    {
+      question: "La magie blanche est-elle sûre pour attirer l'amour ?",
+      answer: "Oui, la magie blanche est une pratique douce et harmonieuse, idéale pour attirer l'amour ou renouer des liens. Les rituels sont réalisés de façon éthique et sécurisée."
+    },
+    {
+      question: "Comment savoir si je suis compatible avec mon partenaire ?",
+      answer: "Nous proposons une analyse approfondie de votre compatibilité amoureuse basée sur vos énergies et vos signes astrologiques, avec des conseils personnalisés pour renforcer votre relation."
+    },
+    {
+      question: "Combien de temps faut-il pour voir les résultats d'un rituel de magie rouge ?",
+      answer: "Les résultats varient selon les situations, mais beaucoup de clients constatent des changements significatifs en quelques semaines. Un suivi est assuré pour optimiser l'efficacité du rituel."
+    },
+    {
+      question: "La magie blanche peut-elle aider à résoudre des conflits de couple ?",
+      answer: "Absolument, la magie blanche est conçue pour apaiser les tensions et rétablir l'harmonie au sein du couple grâce à des rituels doux et énergétiques."
+    },
+    {
+      question: "Comment Frederick personnalise-t-il les rituels de magie rouge ?",
+      answer: "Chaque rituel est personnalisé en fonction de votre situation, de vos énergies et de vos objectifs. Un diagnostic précis permet d'adapter le rituel pour obtenir des résultats optimaux."
+    },
+    {
+      question: "La compatibilité amoureuse peut-elle prédire l'avenir d'une relation ?",
+      answer: "L'analyse de compatibilité offre des insights précieux sur les forces et les faiblesses d'une relation, sans prédire l'avenir, mais en vous guidant pour renforcer vos liens."
+    },
+    {
+      question: "Quels sont les avantages de la voyance par email ?",
+      answer: "La voyance par email est discrète, accessible à tout moment et vous offre des conseils détaillés et personnalisés pour vous guider dans vos décisions sentimentales."
+    },
+    {
+      question: "Comment la confidentialité des consultations est-elle garantie ?",
+      answer: "La confidentialité est assurée par des protocoles stricts. Aucune information personnelle n'est partagée et toutes les consultations sont entièrement sécurisées."
+    },
+    {
+      question: "La magie rouge a-t-elle des effets secondaires ?",
+      answer: "Non, pratiquée de manière éthique et professionnelle, la magie rouge est conçue pour apporter des résultats positifs sans effets secondaires négatifs."
+    },
+    {
+      question: "Comment choisir entre la magie rouge et la magie blanche ?",
+      answer: "La magie rouge est recommandée pour des situations intenses et passionnelles, tandis que la magie blanche convient mieux aux approches douces et harmonieuses. Le choix se fait selon vos besoins spécifiques."
+    },
+    {
+      question: "Quelle est la durée d'une consultation de voyance par email ?",
+      answer: "Les réponses sont généralement envoyées dans un délai de 5 à 8 heures, avec des conseils précis et personnalisés pour vous aider dans vos décisions sentimentales."
+    }
+  ];
+
+  /***** Références aux éléments du DOM *****/
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotContainer = document.getElementById('chatbot-container');
+  const chatbotClose = document.getElementById('chatbot-close');
+  const chatbotMessages = document.getElementById('chatbot-messages');
+  const chatbotInput = document.getElementById('chatbot-input');
+  const chatbotSend = document.getElementById('chatbot-send');
+  const chatbotSuggestions = document.getElementById('chatbot-suggestions');
+
+  /***** Fonction pour ajouter un message dans la conversation *****/
+  function addMessage(sender, text) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('chatbot-message', sender);
+    msgDiv.textContent = text;
+    chatbotMessages.appendChild(msgDiv);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  }
+
+  /***** Algorithme de correspondance avancé *****/
+  function findBestAnswer(userInput) {
+    const input = userInput.toLowerCase();
+    let bestScore = 0, bestAnswer = "";
+    // Pour chaque entrée FAQ, on calcule un score en fonction des mots-clés trouvés
+    faqData.forEach(item => {
+      let score = 0;
+      // On découpe la question en mots (en éliminant la ponctuation)
+      const keywords = item.question.toLowerCase().split(/[\s,?.!;:]+/);
+      keywords.forEach(word => {
+        // On ignore les mots très courts (articles, prépositions)
+        if(word.length > 2 && input.includes(word)) {
+          score++;
+        }
+      });
+      if(score > bestScore) {
+        bestScore = score;
+        bestAnswer = item.answer;
+      }
+    });
+    return bestScore > 0 ? bestAnswer : "Désolé, je n'ai pas compris votre question. Pouvez-vous la reformuler ou choisir parmi les suggestions ci-dessous ?";
+  }
+
+  /***** Gestion de l'envoi de la question *****/
+  function sendQuestion() {
+    const question = chatbotInput.value.trim();
+    if(question === "") return;
+    addMessage('user', question);
+    chatbotInput.value = "";
+    // Recherche de la meilleure réponse avec un léger délai simulant une réflexion
+    setTimeout(() => {
+      const answer = findBestAnswer(question);
+      addMessage('bot', answer);
+      // Met à jour les suggestions en fonction des FAQ (on prend les 4 premières questions)
+      updateSuggestions();
+    }, 500);
+  }
+
+  /***** Mise à jour des suggestions *****/
+  function updateSuggestions() {
+    chatbotSuggestions.innerHTML = "";
+    faqData.slice(0, 4).forEach(item => {
+      const btn = document.createElement('button');
+      btn.textContent = item.question;
+      btn.addEventListener('click', function() {
+        chatbotInput.value = item.question;
+        sendQuestion();
+      });
+      chatbotSuggestions.appendChild(btn);
+    });
+  }
+
+  /***** Gestion des événements *****/
+  chatbotSend.addEventListener('click', sendQuestion);
+  chatbotInput.addEventListener('keypress', function(e) {
+    if(e.key === 'Enter') sendQuestion();
+  });
+  
+  chatbotToggle.addEventListener('click', function() {
+    chatbotContainer.style.display = "flex";
+    chatbotToggle.style.display = "none";
+    // Message d'accueil initial
+    addMessage('bot', "Bonjour ! Posez-moi votre question sur nos rituels sentimentaux ou nos services.");
+    updateSuggestions();
+  });
+  
+  chatbotClose.addEventListener('click', function() {
+    chatbotContainer.style.display = "none";
+    chatbotToggle.style.display = "block";
+    // Optionnel : vider l'historique des messages à la fermeture
+    // chatbotMessages.innerHTML = "";
+  });
+})();
 </script>
   
 </body>
