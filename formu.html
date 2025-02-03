@@ -129,48 +129,35 @@
     Merci ! Votre paiement a bien été reçu
         </div>
         <br>
-        <h1>Votre voyance privée par email ici :</h1>
+        <h1>Formulaire pour Rituel d'Amour</h1>
         <form id="formulaire" action="https://formspree.io/f/xjkkkywn" method="POST" enctype="multipart/form-data">
-            <label for="nom">Nom / Prénom :</label>
+            <label for="nom">Votre nom et prénom :</label>
             <input type="text" id="nom" name="nom" required>
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
-            <label for="telephone">Téléphone :</label>
-            <input type="text" id="telephone" name="telephone">
-            <label for="date_naissance">Date de naissance :</label>
+
+            <label for="nom_concerne">Nom et prénom de la personne concernée :</label>
+            <input type="text" id="nom_concerne" name="nom_concerne">
+
+            <label for="date_naissance">Votre date de naissance :</label>
             <input type="date" id="date_naissance" name="date_naissance" required>
-            <label for="heure_naissance">Heure de naissance (facultatif) :</label>
-            <input type="time" id="heure_naissance" name="heure_naissance">
-            <label for="lieu_naissance">Lieu de naissance :</label>
-            <input type="text" id="lieu_naissance" name="lieu_naissance">
-            <label for="signe_zodiacal">Signe zodiacal :</label>
-            <select id="signe_zodiacal" name="signe_zodiacal" required>
-                <option value="">-- Choisissez --</option>
-                <option value="Capricorne">Capricorne (22 décembre - 19 janvier)</option>
-                <option value="Verseau">Verseau (20 janvier - 18 février)</option>
-                <option value="Poissons">Poissons (19 février - 20 mars)</option>
-                <option value="Bélier">Bélier (21 mars - 19 avril)</option>
-                <option value="Taureau">Taureau (20 avril - 20 mai)</option>
-                <option value="Gémeaux">Gémeaux (21 mai - 20 juin)</option>
-                <option value="Cancer">Cancer (21 juin - 22 juillet)</option>
-                <option value="Lion">Lion (23 juillet - 22 août)</option>
-                <option value="Vierge">Vierge (23 août - 22 septembre)</option>
-                <option value="Balance">Balance (23 septembre - 22 octobre)</option>
-                <option value="Scorpion">Scorpion (23 octobre - 21 novembre)</option>
-                <option value="Sagittaire">Sagittaire (22 novembre - 21 décembre)</option>
-            </select>
-            <label for="chiffres">Sélectionnez 3 chiffres entre 0 et 84 :</label>
-            <input type="text" id="chiffres" name="chiffres" readonly required>
-            <div class="grid-container"></div>
-            <label for="photo">Ajouter une photo (facultatif) :</label>
+
+            <label for="date_naissance_concerne">Date de naissance de la personne concernée :</label>
+            <input type="date" id="date_naissance_concerne" name="date_naissance_concerne">
+
+            <label for="photo">Ajouter une photo récente (facultatif) :</label>
             <input type="file" id="photo" name="photo" accept="image/*">
-            <label for="questions">Vos questions :</label>
-            <textarea id="questions" name="questions" rows="5" required></textarea>
+
+            <label for="description">Description de votre situation et objectif sentimental :</label>
+            <textarea id="description" name="description" rows="5" required></textarea>
+
+            <label for="informations_complementaires">Informations complémentaires :</label>
+            <textarea id="informations_complementaires" name="informations_complementaires" rows="5"></textarea>
+
             <button type="submit">Envoyer</button>
             <div class="contact-link">
                 <a href="mailto:contact.clairvoyancemedium@gmail.com">Contact ClairVoyanceMedium.com</a>
             </div>
         </form>
+    
     </div>
     <script>
         function googleTranslateElementInit() {
