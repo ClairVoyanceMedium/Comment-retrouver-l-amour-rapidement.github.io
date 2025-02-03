@@ -1,21 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- Page d'accueil -->
     <url>
-        <loc>https://clairvoyancemedium.github.io/Voyancepartelephonepaschere.github.io/</loc>
-        <lastmod>2024-12-09</lastmod>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/</loc>
+        <lastmod>2025-02-03</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
+
+    <!-- Pages principales -->
     <url>
-        <loc>https://clairvoyancemedium.github.io/Voyancepartelephonepaschere.github.io/tarifs</loc>
-        <lastmod>2024-12-09</lastmod>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/rituels-amour/</loc>
+        <lastmod>2025-02-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/voyance-email/</loc>
+        <lastmod>2025-02-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/temoignages/</loc>
+        <lastmod>2025-02-03</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/contact/</loc>
+        <lastmod>2025-02-03</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Articles de blog (exemple) -->
+    <url>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/magie-rouge-retour-affectif/</loc>
+        <lastmod>2025-02-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+
     <url>
-        <loc>https://clairvoyancemedium.github.io/Voyancepartelephonepaschere.github.io/contact</loc>
-        <lastmod>2024-12-09</lastmod>
-        <changefreq>monthly</changefreq>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/compatibilite-amoureuse/</loc>
+        <lastmod>2025-02-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/protection-energetique-couple/</loc>
+        <lastmod>2025-02-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Pages légales -->
+    <url>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/mentions-legales/</loc>
+        <lastmod>2025-02-03</lastmod>
+        <changefreq>yearly</changefreq>
         <priority>0.5</priority>
     </url>
+
+    <url>
+        <loc>https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/cgv/</loc>
+        <lastmod>2025-02-03</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
 </urlset>
