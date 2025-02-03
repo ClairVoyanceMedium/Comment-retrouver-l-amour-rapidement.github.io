@@ -115,27 +115,6 @@
   .thank-you{font-size:2.5rem;font-family:'Ephesis',cursive;color:#ffb6c1;text-shadow:3px 3px 6px rgba(255,182,193,0.6);display:block;margin-top:0.5rem;transform:rotate(-2deg);}
   .favorite-button { background: none; border: none; outline: none; }
   .content-container { text-align: left; max-width: 800px; margin: 0 auto; } .content-container ul, .content-container ol { padding-left: 20px; } .content-container li { margin-bottom: 8px; } .cta-container { text-align: left; margin-top: 20px; } .cta-button { display: inline-block; padding: 10px 20px; font-size: 1.2rem; color: #fff; background: linear-gradient(145deg, #FFB6C1, #FF69B4); text-decoration: none; border: none; border-radius: 5px; transition: all 0.3s ease; cursor: pointer; } .cta-button:hover { opacity: 0.9; }</style>
-
-  :root { --button-bg: linear-gradient(145deg, #FFB6C1, #FF69B4); --button-txt: #fff; }
-    /* Bouton pour ouvrir le chatbot */
-    #chatbot-toggle { position: fixed; bottom: 20px; right: 20px; background: var(--button-bg); color: var(--button-txt); border: none; border-radius: 50%; width: 60px; height: 60px; cursor: pointer; font-size: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 1000; }
-    /* Conteneur principal du chatbot */
-    #chatbot-container { position: fixed; bottom: 90px; right: 20px; width: 320px; max-height: 450px; background: #111; border: 1px solid #444; border-radius: 10px; display: none; flex-direction: column; z-index: 1000; overflow: hidden; }
-    /* En-tête du chatbot */
-    #chatbot-header { background: #222; padding: 12px; color: #fff; font-size: 18px; display: flex; justify-content: space-between; align-items: center; }
-    /* Zone d'affichage des messages */
-    #chatbot-messages { flex: 1; padding: 10px; overflow-y: auto; background: #000; color: #fff; font-size: 14px; }
-    /* Zone de saisie */
-    #chatbot-input-container { display: flex; border-top: 1px solid #444; }
-    #chatbot-input { flex: 1; border: none; padding: 10px; font-size: 14px; outline: none; }
-    #chatbot-send { background: var(--button-bg); color: var(--button-txt); border: none; padding: 10px; cursor: pointer; }
-    /* Style des bulles de messages */
-    .chatbot-message { margin-bottom: 10px; padding: 8px; border-radius: 8px; max-width: 90%; word-wrap: break-word; }
-    .chatbot-message.user { background: #87CEEB; color: #000; align-self: flex-end; }
-    .chatbot-message.bot { background: #444; color: #fff; align-self: flex-start; }
-    /* Suggestions affichées sous la zone de saisie */
-    #chatbot-suggestions { padding: 8px; border-top: 1px solid #444; background: #222; display: flex; flex-wrap: wrap; gap: 6px; }
-    #chatbot-suggestions button { background: #555; color: #fff; border: none; border-radius: 4px; padding: 6px 10px; cursor: pointer; font-size: 12px; }
   
   </style>
 
@@ -1154,101 +1133,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-
-<!-- Script JavaScript pour le Chatbot -->
-  <script nonce="48273">
-    (function(){
-      // Base de données FAQ (exemple)
-      const faqData = [
-        { question: "Comment fonctionne la magie rouge pour retrouver son ex ?", answer: "La magie rouge est un rituel puissant qui utilise des énergies intenses pour récupérer un ex ou attirer une passion ardente." },
-        { question: "La magie blanche est-elle sûre pour attirer l'amour ?", answer: "Oui, la magie blanche est une pratique douce et harmonieuse, idéale pour attirer l'amour." }
-        // Ajoutez d'autres questions si nécessaire
-      ];
-
-      // Récupération des éléments DOM
-      const chatbotToggle = document.getElementById('chatbot-toggle');
-      const chatbotContainer = document.getElementById('chatbot-container');
-      const chatbotClose = document.getElementById('chatbot-close');
-      const chatbotMessages = document.getElementById('chatbot-messages');
-      const chatbotInput = document.getElementById('chatbot-input');
-      const chatbotSend = document.getElementById('chatbot-send');
-      const chatbotSuggestions = document.getElementById('chatbot-suggestions');
-
-      // Ajoute un message dans la conversation
-      function addMessage(sender, text) {
-        const msgDiv = document.createElement('div');
-        msgDiv.classList.add('chatbot-message', sender);
-        msgDiv.textContent = text;
-        chatbotMessages.appendChild(msgDiv);
-        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-      }
-
-      // Recherche une réponse
-      function findBestAnswer(userInput) {
-        const input = userInput.toLowerCase();
-        let bestScore = 0, bestAnswer = "";
-        faqData.forEach(item => {
-          let score = 0;
-          const keywords = item.question.toLowerCase().split(/[\s,?.!;:]+/);
-          keywords.forEach(word => { if(word.length > 2 && input.includes(word)) score++; });
-          if(score > bestScore) { bestScore = score; bestAnswer = item.answer; }
-        });
-        return bestScore > 0 ? bestAnswer : "Désolé, je n'ai pas compris votre question. Pouvez-vous la reformuler ou choisir parmi les suggestions ci-dessous ?";
-      }
-
-      // Envoi de la question
-      function sendQuestion() {
-        const question = chatbotInput.value.trim();
-        if(question === "") return;
-        addMessage('user', question);
-        chatbotInput.value = "";
-        setTimeout(() => {
-          const answer = findBestAnswer(question);
-          addMessage('bot', answer);
-          updateSuggestions();
-        }, 500);
-      }
-
-      // Mise à jour des suggestions
-      function updateSuggestions() {
-        chatbotSuggestions.innerHTML = "";
-        faqData.slice(0, 4).forEach(item => {
-          const btn = document.createElement('button');
-          btn.textContent = item.question;
-          btn.addEventListener('click', () => { chatbotInput.value = item.question; sendQuestion(); });
-          chatbotSuggestions.appendChild(btn);
-        });
-      }
-
-      // Événements
-      chatbotSend.addEventListener('click', sendQuestion);
-      chatbotInput.addEventListener('keypress', function(e) { if(e.key === 'Enter') sendQuestion(); });
-      chatbotToggle.addEventListener('click', function() {
-        chatbotContainer.style.display = "flex";
-        chatbotToggle.style.display = "none";
-        addMessage('bot', "Bonjour ! Posez-moi votre question sur nos rituels sentimentaux ou nos services.");
-        updateSuggestions();
-      });
-      chatbotClose.addEventListener('click', function() {
-        chatbotContainer.style.display = "none";
-        chatbotToggle.style.display = "block";
-      });
-    })();
-  </script>
-      
-<div id="chatbot-container">
-  <div id="chatbot-header">
-    <span>Chatbot Clairvoyance</span>
-    <button id="chatbot-close" aria-label="Fermer le chatbot">&times;</button>
-  </div>
-  <div id="chatbot-messages"></div>
-  <div id="chatbot-input-container">
-    <input type="text" id="chatbot-input" placeholder="Votre question...">
-    <button id="chatbot-send">Envoyer</button>
-  </div>
-  <div id="chatbot-suggestions"></div>
-</div>
-<button id="chatbot-toggle" aria-label="Ouvrir le chatbot">Chat</button>
   
 </body>
 </html>
