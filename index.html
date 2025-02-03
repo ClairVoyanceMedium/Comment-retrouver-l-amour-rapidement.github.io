@@ -1155,15 +1155,17 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<!-- Script JavaScript avancé pour le Chatbot (sans API externe) -->
+<!-- Script JavaScript pour le Chatbot -->
   <script nonce="48273">
     (function(){
-      
+      // Base de données FAQ (exemple)
       const faqData = [
-        { question: "Comment fonctionne la magie rouge pour retrouver son ex ?", answer: "La magie rouge est un rituel puissant..." },
-        { question: "La magie blanche est-elle sûre pour attirer l'amour ?", answer: "Oui, la magie blanche est une pratique douce..." },
+        { question: "Comment fonctionne la magie rouge pour retrouver son ex ?", answer: "La magie rouge est un rituel puissant qui utilise des énergies intenses pour récupérer un ex ou attirer une passion ardente." },
+        { question: "La magie blanche est-elle sûre pour attirer l'amour ?", answer: "Oui, la magie blanche est une pratique douce et harmonieuse, idéale pour attirer l'amour." }
+        // Ajoutez d'autres questions si nécessaire
       ];
 
+      // Récupération des éléments DOM
       const chatbotToggle = document.getElementById('chatbot-toggle');
       const chatbotContainer = document.getElementById('chatbot-container');
       const chatbotClose = document.getElementById('chatbot-close');
@@ -1172,6 +1174,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const chatbotSend = document.getElementById('chatbot-send');
       const chatbotSuggestions = document.getElementById('chatbot-suggestions');
 
+      // Ajoute un message dans la conversation
       function addMessage(sender, text) {
         const msgDiv = document.createElement('div');
         msgDiv.classList.add('chatbot-message', sender);
@@ -1180,20 +1183,20 @@ document.addEventListener("DOMContentLoaded", function() {
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
       }
 
+      // Recherche une réponse
       function findBestAnswer(userInput) {
         const input = userInput.toLowerCase();
         let bestScore = 0, bestAnswer = "";
         faqData.forEach(item => {
           let score = 0;
           const keywords = item.question.toLowerCase().split(/[\s,?.!;:]+/);
-          keywords.forEach(word => {
-            if(word.length > 2 && input.includes(word)) score++;
-          });
+          keywords.forEach(word => { if(word.length > 2 && input.includes(word)) score++; });
           if(score > bestScore) { bestScore = score; bestAnswer = item.answer; }
         });
         return bestScore > 0 ? bestAnswer : "Désolé, je n'ai pas compris votre question. Pouvez-vous la reformuler ou choisir parmi les suggestions ci-dessous ?";
       }
 
+      // Envoi de la question
       function sendQuestion() {
         const question = chatbotInput.value.trim();
         if(question === "") return;
@@ -1206,6 +1209,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 500);
       }
 
+      // Mise à jour des suggestions
       function updateSuggestions() {
         chatbotSuggestions.innerHTML = "";
         faqData.slice(0, 4).forEach(item => {
@@ -1216,6 +1220,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       }
 
+      // Événements
       chatbotSend.addEventListener('click', sendQuestion);
       chatbotInput.addEventListener('keypress', function(e) { if(e.key === 'Enter') sendQuestion(); });
       chatbotToggle.addEventListener('click', function() {
@@ -1229,7 +1234,7 @@ document.addEventListener("DOMContentLoaded", function() {
         chatbotToggle.style.display = "block";
       });
     })();
-      </script>
+  </script>
       
 <div id="chatbot-container">
   <div id="chatbot-header">
