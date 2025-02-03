@@ -1,1 +1,260 @@
-okk
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire voyance rapide par email</title>
+    <!-- Importation des polices Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon_voyancepartelephone.png" type="image/png" sizes="16x16 32x32 48x48 64x64 128x128" crossorigin="anonymous" loading="lazy">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #000;
+        }
+        .logo-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .logo {
+            max-width: 255px;
+            height: auto;
+            border-radius: 8px;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 15px auto;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+        label {
+            font-weight: bold;
+            margin: 10px 0 5px;
+            display: block;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #ff69b4;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background: #ff85c1;
+        }
+        .grid-container {
+            display: none;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+        }
+        .grid-item {
+            padding: 10px;
+            background: #e0e0e0;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 4px;
+            user-select: none;
+        }
+        .grid-item.selected {
+            background: #ff69b4;
+            color: #fff;
+        }
+        .contact-link {
+            text-align: center;
+            font-size: 14px;
+        }
+        .contact-link a {
+            color: #000;
+            text-decoration: none;
+        }
+        #google_translate_element {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+
+<style>
+    .responsive-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
+
+    <style>
+    #payment-confirmation {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        color: green;
+    }
+</style>
+    
+</head>
+<body>
+    <div class="logo-container">
+  <img src="https://i.imgur.com/ajZF0ae.jpg" alt="ClairVoyanceMedium" class="responsive-img">
+    </div>
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element"></div>
+    <div class="form-container">
+<div id="google_translate_element"></div>
+
+        <div id="payment-confirmation" style="text-align: center; margin-top: 10px; font-size: 16px; font-weight: bold; color: green;">
+    Merci ! Votre paiement a bien été reçu
+        </div>
+        <br>
+        <h1>Votre voyance privée par email ici :</h1>
+        <form id="formulaire" action="https://formspree.io/f/xjkkkywn" method="POST" enctype="multipart/form-data">
+            <label for="nom">Nom / Prénom :</label>
+            <input type="text" id="nom" name="nom" required>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+            <label for="telephone">Téléphone :</label>
+            <input type="text" id="telephone" name="telephone">
+            <label for="date_naissance">Date de naissance :</label>
+            <input type="date" id="date_naissance" name="date_naissance" required>
+            <label for="heure_naissance">Heure de naissance (facultatif) :</label>
+            <input type="time" id="heure_naissance" name="heure_naissance">
+            <label for="lieu_naissance">Lieu de naissance :</label>
+            <input type="text" id="lieu_naissance" name="lieu_naissance">
+            <label for="signe_zodiacal">Signe zodiacal :</label>
+            <select id="signe_zodiacal" name="signe_zodiacal" required>
+                <option value="">-- Choisissez --</option>
+                <option value="Capricorne">Capricorne (22 décembre - 19 janvier)</option>
+                <option value="Verseau">Verseau (20 janvier - 18 février)</option>
+                <option value="Poissons">Poissons (19 février - 20 mars)</option>
+                <option value="Bélier">Bélier (21 mars - 19 avril)</option>
+                <option value="Taureau">Taureau (20 avril - 20 mai)</option>
+                <option value="Gémeaux">Gémeaux (21 mai - 20 juin)</option>
+                <option value="Cancer">Cancer (21 juin - 22 juillet)</option>
+                <option value="Lion">Lion (23 juillet - 22 août)</option>
+                <option value="Vierge">Vierge (23 août - 22 septembre)</option>
+                <option value="Balance">Balance (23 septembre - 22 octobre)</option>
+                <option value="Scorpion">Scorpion (23 octobre - 21 novembre)</option>
+                <option value="Sagittaire">Sagittaire (22 novembre - 21 décembre)</option>
+            </select>
+            <label for="chiffres">Sélectionnez 3 chiffres entre 0 et 84 :</label>
+            <input type="text" id="chiffres" name="chiffres" readonly required>
+            <div class="grid-container"></div>
+            <label for="photo">Ajouter une photo (facultatif) :</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <label for="questions">Vos questions :</label>
+            <textarea id="questions" name="questions" rows="5" required></textarea>
+            <button type="submit">Envoyer</button>
+            <div class="contact-link">
+                <a href="mailto:contact.clairvoyancemedium@gmail.com">Contact ClairVoyanceMedium.com</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'fr',
+                includedLanguages: 'aut,en,es,zh-CN,hi,ar,pt,ru,ja,de,ko,vi,it,tr,pl,uk,nl,mlt,cyp,svk,th,fr,sv,cs,el,da,fi,he,hu,id,ms,no,ro,sk,sl,af,bg,hr,lt,lv,sr,et,ta,te,sw,zu,fa,lo,my,ne,xh,yo',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        async function detectLanguageByIP() {
+            try {
+                const response = await fetch('https://ipinfo.io?token=<YOUR_API_TOKEN>');
+                const data = await response.json();
+                const countryCode = data.country.toLowerCase(); // Code pays
+                const langMap = {
+                    us: 'en', fr: 'fr', es: 'es', de: 'de', it: 'it', ru: 'ru', il: 'he',
+                    cn: 'zh-CN', jp: 'ja', kr: 'ko', in: 'hi', pt: 'pt', ar: 'ar', vi: 'vi'
+                };
+                const detectedLanguage = langMap[countryCode] || 'en';
+                autoTranslate(detectedLanguage);
+            } catch (error) {
+                console.error('IP-based detection failed, falling back to browser language:', error);
+                const fallbackLang = navigator.language.split('-')[0];
+                autoTranslate(fallbackLang);
+            }
+        }
+
+        function autoTranslate(detectedLanguage) {
+            setTimeout(() => {
+                const translateCombo = document.querySelector('.goog-te-combo');
+                if (translateCombo) {
+                    translateCombo.value = detectedLanguage;
+                    translateCombo.dispatchEvent(new Event('change'));
+                }
+            }, 2000);
+        }
+
+        function loadGoogleTranslateScript() {
+            const script = document.createElement('script');
+            script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            script.async = true;
+            script.onload = detectLanguageByIP;
+            script.onerror = () => {
+                document.getElementById('google_translate_element').innerHTML =
+                    '<p style="color: red; text-align: center;">Traduction indisponible. Veuillez réessayer plus tard.</p>';
+            };
+            document.body.appendChild(script);
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadGoogleTranslateScript();
+
+            const chiffresInput = document.getElementById("chiffres");
+            const gridContainer = document.querySelector(".grid-container");
+            for (let i = 0; i <= 84; i++) {
+                const div = document.createElement("div");
+                div.classList.add("grid-item");
+                div.textContent = i;
+                gridContainer.appendChild(div);
+            }
+            const gridItems = document.querySelectorAll(".grid-item");
+            let selectedNumbers = [];
+            chiffresInput.addEventListener("click", () => {
+                gridContainer.style.display = "grid";
+            });
+            gridItems.forEach(item => {
+                item.addEventListener("click", () => {
+                    const number = parseInt(item.textContent);
+                    if (selectedNumbers.includes(number)) {
+                        selectedNumbers = selectedNumbers.filter(n => n !== number);
+                        item.classList.remove("selected");
+                    } else if (selectedNumbers.length < 3) {
+                        selectedNumbers.push(number);
+                        item.classList.add("selected");
+                    }
+                    chiffresInput.value = selectedNumbers.join(", ");
+                    if (selectedNumbers.length === 3) {
+                        gridContainer.style.display = "none";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
