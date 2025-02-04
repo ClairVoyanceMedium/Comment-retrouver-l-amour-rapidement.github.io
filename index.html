@@ -308,7 +308,7 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Rituel de Magie Rouge pour Retrouver l'Amour",
-  "description": "Un rituel spirituel numérique de magie rouge, conçu sur mesure pour récupérer un ex ou attirer une passion ardente. Réalisé par Frederick, médium expert en rituels sentimentaux, avec une livraison numérique instantanée dans le monde entier.",
+  "description": "Un rituel spirituel puissant de magie rouge conçu sur mesure pour retrouver un ex, attirer un amour sincère ou renforcer une relation. Réalisé par Frederick, médium expert, avec une livraison numérique instantanée.",
   "image": [
     "https://clairvoyancemedium.github.io/Images/Rituel-Magie-Rouge-1.jpg",
     "https://clairvoyancemedium.github.io/Images/Rituel-Magie-Rouge-2.jpg",
@@ -316,6 +316,10 @@
   ],
   "sku": "MAGIE-ROUGE-001",
   "mpn": "MAGROUGE-DIGITAL-001",
+  "brand": {
+    "@type": "Brand",
+    "name": "ClairvoyanceMedium.com"
+  },
   "category": "Spiritualité et Voyance",
   "material": "Digital Service",
   "audience": {
@@ -342,11 +346,11 @@
     "seller": {
       "@type": "Organization",
       "name": "ClairvoyanceMedium.com",
-      "logo": "https://clairvoyancemedium.github.io/Images/Logo-ClairvoyanceMedium.png"
+      "logo": "https://clairvoyancemedium.github.io/Images/Logo-ClairvoyanceMedium.png",
+      "url": "https://clairvoyancemedium.com"
     },
     "deliveryMethod": {
       "@type": "DeliveryMethod",
-      "identifier": "DigitalDownload",
       "name": "Livraison numérique"
     },
     "shippingDetails": {
@@ -358,12 +362,37 @@
       },
       "deliveryTime": {
         "@type": "ShippingDeliveryTime",
-        "handlingTime": "PT0S",
-        "transitTime": "PT0S"
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        }
       },
       "shippingDestination": {
         "@type": "DefinedRegion",
-        "addressCountry": "Worldwide"
+        "addressCountry": {
+          "@type": "Country",
+          "name": "Worldwide"
+        }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "name": "Politique de Retour Numérique de ClairvoyanceMedium.com",
+      "url": "https://clairvoyancemedium.github.io/Conditions-de-retour/",
+      "merchantReturnDays": 14,
+      "returnMethod": "Digital",
+      "returnFees": {
+        "@type": "MonetaryAmount",
+        "value": "0.00",
+        "currency": "EUR"
       }
     }
   },
@@ -385,7 +414,6 @@
       "reviewBody": "J'ai utilisé la magie rouge pour récupérer mon ex, et les résultats ont été incroyables ! Frederick m'a guidée avec précision et bienveillance.",
       "reviewRating": {
         "@type": "Rating",
-        "reviewCount": "300",
         "ratingValue": "5",
         "bestRating": "5",
         "worstRating": "1"
@@ -446,18 +474,6 @@
       "contactType": "Service Client",
       "areaServed": "Worldwide",
       "availableLanguage": ["French", "English"]
-    }
-  },
-  "hasMerchantReturnPolicy": {
-    "@type": "MerchantReturnPolicy",
-    "name": "Politique de Retour Numérique de ClairvoyanceMedium.com",
-    "url": "https://clairvoyancemedium.github.io/Conditions-de-retour/",
-    "merchantReturnDays": 14,
-    "returnMethod": "Digital",
-    "returnFees": {
-      "@type": "MonetaryAmount",
-      "value": "0.00",
-      "currency": "EUR"
     }
   },
   "keywords": "rituel de magie rouge, retrouver l'amour, voyance, rituels puissants, retour affectif, passion amoureuse, clairvoyance en ligne, service numérique mondial"
