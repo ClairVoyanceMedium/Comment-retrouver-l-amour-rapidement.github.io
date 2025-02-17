@@ -1,3 +1,5 @@
+# 🔥 Fichier robots.txt optimisé pour IA, recherche vocale & SEO mondial
+
 User-agent: *
 Disallow: /admin/
 Disallow: /private/
@@ -9,39 +11,45 @@ Disallow: /search
 Disallow: /*?*
 
 Allow: /
-
-# Sitemap pour une indexation rapide
-Sitemap:  https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/sitemap.xml
-
-# Directives SEO avancées pour Googlebot
-User-agent: Googlebot
-Allow: /
-Disallow: /admin/
-Disallow: /private/
-Disallow: /wp-admin/
-Disallow: /wp-login.php
-Disallow: /*?*
-
-# Priorisation du crawl
-Crawl-delay: 5
-
-# Autorisation des snippets et des images
-User-agent: Googlebot
 Allow: /images/
+Allow: /videos/
 Allow: /css/
 Allow: /js/
 Allow: /fonts/
 
-# Spécifique aux robots Bingbot et Yandex
+# 📍 Sitemap pour une indexation optimale
+Sitemap: https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/sitemap.xml
+
+# 🔎 Optimisation pour Googlebot (Google Search, Images, News, Ads, etc.)
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 3
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-Ads
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+# 🎯 Optimisation pour Bing et Yandex (Moteurs secondaires)
 User-agent: Bingbot
-Crawl-delay: 10
-Disallow: /private/
+Allow: /
+Crawl-delay: 4
 
 User-agent: Yandex
-Crawl-delay: 10
-Disallow: /private/
+Allow: /
+Crawl-delay: 4
 
-# Blocage des mauvais bots connus (protection contre le spam et le scrapping)
+# 🛑 Blocage des bots indésirables (scraping & spam)
 User-agent: MJ12bot
 Disallow: /
 
@@ -75,20 +83,42 @@ Disallow: /
 User-agent: Archive.org_bot
 Disallow: /
 
-# Protection contre les robots de spam et de scrapping
+# 🤖 Optimisation pour l’IA & Recherche Vocale (Google Assistant, ChatGPT, Siri, Alexa)
 User-agent: GPTBot
-Disallow: /
+Allow: /
 
 User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: Bytespider
-Disallow: /
+Allow: /
 
-# Activation de la prévisualisation enrichie pour Google Discover et ChatGPT
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 
-# Activation des prévisualisations enrichies pour les IA et la recherche vocale
-User-agent: ChatGPT-User
+User-agent: SiriBot
 Allow: /
+
+User-agent: AlexaBot
+Allow: /
+
+User-agent: Googlebot-Voice
+Allow: /
+
+User-agent: Bingbot-Voice
+Allow: /
+
+# 📌 Gestion avancée des paramètres d’URL pour un SEO propre (éviter le contenu dupliqué)
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content / 
+
+# 🚀 Boost SEO pour Google Discover & Progressive Web Apps (PWA)
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-PWA
+Allow: /
+
+# ✅ Finalisation et cohérence pour une indexation rapide et propre
