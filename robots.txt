@@ -1,55 +1,99 @@
-# 🔥 Fichier robots.txt optimisé pour IA, recherche vocale & SEO mondial
+# robots.txt - retour-affectif-voyance.fr
+# SEO, moteurs de recherche, assistants IA et recherche vocale
+# Domaine principal : https://www.retour-affectif-voyance.fr/
+
+Sitemap: https://www.retour-affectif-voyance.fr/sitemap.xml
 
 User-agent: *
-Disallow: /admin/
-Disallow: /private/
-Disallow: /temp/
-Disallow: /cgi-bin/
-Disallow: /wp-admin/
-Disallow: /wp-login.php
-Disallow: /search
-Disallow: /*?*
-
 Allow: /
 Allow: /images/
-Allow: /videos/
 Allow: /css/
 Allow: /js/
 Allow: /fonts/
+Allow: /assets/
+Allow: /favicon_optimized.png
 
-# 📍 Sitemap pour une indexation optimale
-Sitemap: https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/sitemap.xml
+# Parametres de tracking a ne pas explorer pour eviter les doublons d'URL
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+Disallow: /*?msclkid=*
+Disallow: /*?yclid=*
 
-# 🔎 Optimisation pour Googlebot (Google Search, Images, News, Ads, etc.)
+# Moteurs de recherche principaux
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 3
 
 User-agent: Googlebot-Image
-Allow: /images/
-
-User-agent: Googlebot-News
 Allow: /
 
 User-agent: Googlebot-Video
 Allow: /
 
-User-agent: Googlebot-Ads
+User-agent: Googlebot-Mobile
 Allow: /
 
 User-agent: AdsBot-Google
 Allow: /
 
-# 🎯 Optimisation pour Bing et Yandex (Moteurs secondaires)
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 4
+
+User-agent: BingPreview
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: QwantBot
+Allow: /
 
 User-agent: Yandex
 Allow: /
-Crawl-delay: 4
+Crawl-delay: 10
 
-# 🛑 Blocage des bots indésirables (scraping & spam)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 10
+
+# Assistants IA, moteurs conversationnels et indexation IA
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# Bots SEO tres consommateurs de ressources ou non prioritaires
 User-agent: MJ12bot
 Disallow: /
 
@@ -68,57 +112,8 @@ Disallow: /
 User-agent: PetalBot
 Disallow: /
 
-User-agent: Sogou
-Disallow: /
-
 User-agent: MauiBot
 Disallow: /
 
-User-agent: SEOkicks
-Disallow: /
-
-User-agent: Exabot
-Disallow: /
-
-User-agent: Archive.org_bot
-Disallow: /
-
-# 🤖 Optimisation pour l’IA & Recherche Vocale (Google Assistant, ChatGPT, Siri, Alexa)
-User-agent: GPTBot
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: SiriBot
-Allow: /
-
-User-agent: AlexaBot
-Allow: /
-
-User-agent: Googlebot-Voice
-Allow: /
-
-User-agent: Bingbot-Voice
-Allow: /
-
-# 📌 Gestion avancée des paramètres d’URL pour un SEO propre (éviter le contenu dupliqué)
-Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content / 
-
-# 🚀 Boost SEO pour Google Discover & Progressive Web Apps (PWA)
-User-agent: Googlebot-Mobile
-Allow: /
-
-User-agent: Googlebot-PWA
-Allow: /
-
-# ✅ Finalisation et cohérence pour une indexation rapide et propre
+# Directive surtout exploitee par Yandex pour limiter les doublons de tracking
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid&msclkid&yclid
