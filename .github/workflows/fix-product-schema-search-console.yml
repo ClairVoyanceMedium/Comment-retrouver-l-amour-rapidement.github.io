@@ -1,0 +1,65 @@
+name: Fix Product Schema Search Console
+
+on:
+  push:
+    paths:
+      - ".github/workflows/fix-product-schema-search-console.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fix Product JSON-LD for Search Console
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          html = path.read_text(encoding='utf-8')
+          original = html
+
+          replacements = {
+              '"name": "Monde entier"': '"name": "FR"',
+              '"name": "Worldwide"': '"name": "FR"',
+              '"returnMethod": "Digital"': '"returnMethod": "https://schema.org/ReturnByMail"',
+              '"returnFees": {\n        "@type": "MonetaryAmount",\n        "value": "0.00",\n        "currency": "EUR"\n      }': '"returnFees": "https://schema.org/FreeReturn"'
+          }
+
+          for old, new in replacements.items():
+              html = html.replace(old, new)
+
+          if '"returnPolicyCategory"' not in html:
+              html = html.replace(
+                  '"url": "https://clairvoyancemedium.github.io/Conditions-de-retour/",\n      "merchantReturnDays": 14,',
+                  '"url": "https://clairvoyancemedium.github.io/Conditions-de-retour/",\n      "applicableCountry": "FR",\n      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",\n      "merchantReturnDays": 14,'
+              )
+          elif '"applicableCountry"' not in html:
+              html = html.replace(
+                  '"url": "https://clairvoyancemedium.github.io/Conditions-de-retour/",\n      "merchantReturnDays": 14,',
+                  '"url": "https://clairvoyancemedium.github.io/Conditions-de-retour/",\n      "applicableCountry": "FR",\n      "merchantReturnDays": 14,'
+              )
+
+          if html == original:
+              print('Aucune modification nécessaire')
+          else:
+              path.write_text(html, encoding='utf-8')
+              print('Schema Product corrigé pour Search Console')
+          PY
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "Aucun changement à committer"
+            exit 0
+          fi
+          git config user.name "SEO Schema Fix"
+          git config user.email "actions@github.com"
+          git add index.html
+          git commit -m "Fix Product schema fields for Search Console"
+          git push
