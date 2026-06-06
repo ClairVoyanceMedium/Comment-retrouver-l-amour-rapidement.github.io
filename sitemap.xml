@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-
-  <!-- Page principale - retour affectif et voyance sentimentale -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.retour-affectif-voyance.fr/</loc>
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://i.imgur.com/GmyGlKk.webp</image:loc>
-      <image:title>Retour affectif et voyance sentimentale</image:title>
-      <image:caption>Accompagnement sentimental, retour affectif, rituels d'amour et voyance avec Frederick du cabinet ClairVoyanceMedium.com.</image:caption>
-    </image:image>
   </url>
-
 </urlset>
