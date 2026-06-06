@@ -21,94 +21,40 @@ jobs:
           python3 <<'PY'
           from pathlib import Path
           import re
-
           p = Path('index.html')
           html = p.read_text(encoding='utf-8')
           old = html
           domain = 'https://www.retour-affectif-voyance.fr/'
           old_page = 'https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/'
-
           html = html.replace('<title>Retrouver l\'amour grâce à la puissance des rituels - Rituels Sentimentaux & Voyance</title>', '<title>Retour affectif et voyance amoureuse avec Frederick</title>')
           html = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Retour affectif, voyance sentimentale et accompagnement amoureux avec Frederick du cabinet ClairVoyanceMedium.com. Consultation sérieuse, confidentielle et personnalisée.">', html, count=1)
           html = re.sub(r'<meta name="robots" content="[^"]*">', '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">', html, count=1)
           html = re.sub(r'<meta name="bingbot" content="[^"]*">', '<meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">', html, count=1)
-
           html = html.replace('<meta name="twitter:title" content="Retrouver l\'amour grâce à la puissance des rituels - Rituels Sentimentaux & Voyance">', '<meta name="twitter:title" content="Retour affectif et voyance amoureuse avec Frederick">')
           html = re.sub(r'<meta name="twitter:description" content="[^"]*">', '<meta name="twitter:description" content="Accompagnement amoureux, retour affectif et voyance sentimentale avec Frederick du cabinet ClairVoyanceMedium.com.">', html, count=1)
           if '<meta name="twitter:url"' not in html:
               html = html.replace('<meta name="twitter:image" content="https://i.imgur.com/GmyGlKk.webp">', '<meta name="twitter:image" content="https://i.imgur.com/GmyGlKk.webp">\n  <meta name="twitter:url" content="' + domain + '">', 1)
-
           html = html.replace('<meta property="og:title" content="Retrouver l\'amour grâce à la puissance des rituels - Rituels Sentimentaux & Voyance">', '<meta property="og:title" content="Retour affectif et voyance amoureuse avec Frederick">')
           html = re.sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content="Retour affectif, accompagnement amoureux et voyance sentimentale avec Frederick du cabinet ClairVoyanceMedium.com.">', html, count=1)
           html = re.sub(r'<meta property="og:url" content="[^"]*">', '<meta property="og:url" content="' + domain + '">', html, count=1)
           if '<meta property="og:type"' not in html:
               html = html.replace('<meta property="og:url" content="' + domain + '">', '<meta property="og:url" content="' + domain + '">\n  <meta property="og:type" content="website">\n  <meta property="og:locale" content="fr_FR">\n  <meta property="og:site_name" content="Retour affectif voyance">', 1)
-
           html = re.sub(r'<link rel="canonical" href="[^"]*">', '<link rel="canonical" href="' + domain + '">', html, count=1)
           html = html.replace(old_page, domain)
-          html = html.replace('www.clairvoyancemedium.com', 'www.retour-affectif-voyance.fr')
           html = html.replace("'domains': ['site1.com', 'site2.com', 'site3.com']", "'domains': ['retour-affectif-voyance.fr', 'clairvoyancemedium.com']")
           html = html.replace('"priceValidUntil": "2025-12-31"', '"priceValidUntil": "2026-12-31"')
-          html = html.replace('"url": "https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/"', '"url": "' + domain + '"')
-          html = html.replace('"item": "https://clairvoyancemedium.github.io/Comment-retrouver-l-amour-rapidement.github.io/"', '"item": "' + domain + '"')
-
           broken = re.compile(r'<!-- Balise JSON-LD Speakable optimisée -->.*?<meta name="AI-friendly-content" content="true">', re.S)
-          replacement = '''<!-- JSON-LD WebPage + Speakable, optimise pour moteurs de recherche, IA et assistants vocaux -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://www.retour-affectif-voyance.fr/#webpage",
-  "url": "https://www.retour-affectif-voyance.fr/",
-  "name": "Retour affectif et voyance amoureuse avec Frederick",
-  "description": "Page officielle de retour affectif et voyance amoureuse avec Frederick du cabinet ClairVoyanceMedium.com.",
-  "inLanguage": "fr-FR",
-  "isPartOf": {
-    "@type": "WebSite",
-    "@id": "https://www.retour-affectif-voyance.fr/#website",
-    "url": "https://www.retour-affectif-voyance.fr/",
-    "name": "Retour affectif voyance"
-  },
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": ["h1", "h2", "main p", "main blockquote", ".cta-button"]
-  }
-}
-</script>
-
-<meta name="AI-friendly-content" content="true">'''
+          replacement = '<!-- JSON-LD WebPage + Speakable, optimise pour moteurs de recherche, IA et assistants vocaux -->\n<script type="application/ld+json">\n{\n  "@context": "https://schema.org",\n  "@type": "WebPage",\n  "@id": "https://www.retour-affectif-voyance.fr/#webpage",\n  "url": "https://www.retour-affectif-voyance.fr/",\n  "name": "Retour affectif et voyance amoureuse avec Frederick",\n  "description": "Page officielle de retour affectif et voyance amoureuse avec Frederick du cabinet ClairVoyanceMedium.com.",\n  "inLanguage": "fr-FR",\n  "isPartOf": {"@type": "WebSite", "@id": "https://www.retour-affectif-voyance.fr/#website", "url": "https://www.retour-affectif-voyance.fr/", "name": "Retour affectif voyance"},\n  "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", "main p", "main blockquote", ".cta-button"]}\n}\n</script>\n\n<meta name="AI-friendly-content" content="true">'
           html = broken.sub(replacement, html, count=1)
-
-          if '<script type="application/ld+json" id="seo-service-schema">' not in html:
-              extra = '''
-<script type="application/ld+json" id="seo-service-schema">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://www.retour-affectif-voyance.fr/#service",
-  "name": "Retour affectif et voyance amoureuse avec Frederick",
-  "url": "https://www.retour-affectif-voyance.fr/",
-  "image": "https://i.imgur.com/GmyGlKk.webp",
-  "telephone": "+33695468923",
-  "areaServed": ["FR", "BE", "CH", "CA", "MC"],
-  "availableLanguage": ["fr", "en"],
-  "priceRange": "€€",
-  "description": "Accompagnement amoureux, retour affectif et voyance sentimentale par Frederick du cabinet ClairVoyanceMedium.com.",
-  "provider": {
-    "@type": "Person",
-    "name": "Frederick",
-    "jobTitle": "Voyant professionnel"
-  }
-}
-</script>
-'''
+          extra_id = '<script type="application/ld+json" id="seo-service-schema">'
+          if extra_id not in html:
+              extra = '\n<script type="application/ld+json" id="seo-service-schema">\n{\n  "@context": "https://schema.org",\n  "@type": "ProfessionalService",\n  "@id": "https://www.retour-affectif-voyance.fr/#service",\n  "name": "Retour affectif et voyance amoureuse avec Frederick",\n  "url": "https://www.retour-affectif-voyance.fr/",\n  "image": "https://i.imgur.com/GmyGlKk.webp",\n  "telephone": "+33695468923",\n  "areaServed": ["FR", "BE", "CH", "CA", "MC"],\n  "availableLanguage": ["fr", "en"],\n  "priceRange": "€€",\n  "description": "Accompagnement amoureux, retour affectif et voyance sentimentale par Frederick du cabinet ClairVoyanceMedium.com.",\n  "provider": {"@type": "Person", "name": "Frederick", "jobTitle": "Voyant professionnel"}\n}\n</script>\n'
               html = html.replace('</head>', extra + '\n</head>', 1)
-
-          if html == old:
-              print('Aucune modification index')
-          else:
+          if html != old:
               p.write_text(html, encoding='utf-8')
               print('index.html optimise')
+          else:
+              print('Aucune modification index')
           PY
 
       - name: Commit changes
