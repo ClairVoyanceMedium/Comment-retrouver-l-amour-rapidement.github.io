@@ -1,0 +1,59 @@
+name: Add SEO section approche serieuse
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/add-approche-serieuse.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  add-section:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Insert section in index.html
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          html = path.read_text(encoding='utf-8')
+
+          marker = '<!-- Section SEO : approche sérieuse et personnalisée -->'
+          section = '''
+    <!-- Section SEO : approche sérieuse et personnalisée -->
+    <section style="margin-bottom: 2rem;" aria-labelledby="approche-serieuse-personnalisee">
+      <h2 id="approche-serieuse-personnalisee">Une approche sérieuse et personnalisée</h2>
+      <p>Un retour affectif ne doit pas être présenté comme une promesse mécanique. L’objectif est d’abord de comprendre la situation : les sentiments encore présents, les blocages, les tensions, les influences extérieures, le passé du couple et les possibilités réelles d’évolution.</p>
+      <p><strong>Frederick du cabinet ClairVoyanceMedium.com</strong> privilégie une approche claire, confidentielle et personnalisée. La consultation permet de savoir si une démarche sentimentale est cohérente, si un travail spirituel peut être envisagé, ou si la priorité est plutôt de prendre du recul.</p>
+    </section>
+'''
+
+          if marker not in html:
+              target = '  <main>\n'
+              if target not in html:
+                  raise SystemExit('Balise <main> introuvable')
+              html = html.replace(target, target + section + '\n', 1)
+              path.write_text(html, encoding='utf-8')
+              print('Section ajoutée dans index.html')
+          else:
+              print('Section déjà présente, aucune modification')
+          PY
+
+      - name: Commit changes
+        run: |
+          if git diff --quiet; then
+            echo "Aucune modification à valider."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Ajouter une section sur l'approche sérieuse"
+          git push
